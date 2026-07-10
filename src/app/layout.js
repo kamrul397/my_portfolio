@@ -2,6 +2,7 @@ import "./globals.css";
 import Header from "@/components/header/Header";
 import Footer from "@/components/footer/Footer";
 import { Roboto_Condensed } from "next/font/google";
+import { ToastContainer } from "react-toastify";
 
 // Define the clean, modern body font
 // Define the font correctly
@@ -11,7 +12,7 @@ const robotoCondensed = Roboto_Condensed({
   variable: "--font-roboto-condensed", // Clean variable name for Tailwind
 });
 export const metadata = {
-  title: "My Developer Portfolio",
+  title: "Kamrul Islam's Portfolio",
   description:
     "A showcase of my web development projects built with Next.js and JavaScript.",
 };
@@ -25,6 +26,11 @@ export default function RootLayout({ children }) {
       >
         <div className="max-w-7xl mx-auto">
           <Header />
+          <ToastContainer
+            position="top-right"
+            autoClose={3000}
+            theme="colored"
+          />
           {children}
           <Footer />
         </div>
