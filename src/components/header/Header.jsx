@@ -1,39 +1,58 @@
-export default function Header() {
+"use client";
+
+import { useEffect, useState } from "react";
+
+const links = [
+  { id: "home", label: "Home" },
+  { id: "projects", label: "Projects" },
+  { id: "about", label: "About" },
+  { id: "contact", label: "Contact" },
+];
+
+export default function Navbar() {
+  const [active, setActive] = useState("home");
+
+  useEffect(() => {
+    const sections = document.querySelectorAll("section[id]");
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActive(entry.target.id);
+          }
+        });
+      },
+      {
+        threshold: 0.6,
+      },
+    );
+
+    sections.forEach((section) => observer.observe(section));
+
+    return () => {
+      sections.forEach((section) => observer.unobserve(section));
+    };
+  }, []);
+
   return (
-    <header className="sticky top-0 z-50 backdrop-blur-md bg-white/70 border-b border-slate-100 px-6 sm:px-12 md:px-24 py-4 flex justify-between items-center">
-      <a
-        href="#"
-        className="font-extrabold text-xl tracking-tight text-blue-600"
-      >
-        KAMRUL ISLAM
-      </a>
-
-      <nav className="flex gap-6 font-medium text-sm text-slate-600">
-        {/* Links with gradient underline animations */}
-        <a
-          href="#projects"
-          className="relative py-1 group hover:text-blue-600 transition-colors duration-200"
-        >
-          Projects
-          <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-gradient-to-r from-blue-600 to-indigo-600 group-hover:w-full transition-all duration-300"></span>
-        </a>
-
-        <a
-          href="#about"
-          className="relative py-1 group hover:text-blue-600 transition-colors duration-200"
-        >
-          About
-          <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-gradient-to-r from-blue-600 to-indigo-600 group-hover:w-full transition-all duration-300"></span>
-        </a>
-
-        <a
-          href="#contact"
-          className="relative py-1 group hover:text-blue-600 transition-colors duration-200"
-        >
-          Contact
-          <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-gradient-to-r from-blue-600 to-indigo-600 group-hover:w-full transition-all duration-300"></span>
-        </a>
-      </nav>
-    </header>
+    <nav className="fixed top-4 left-1/2 -translate-x-1/2 md:top-4 md:left-1/2 md:-translate-x-1/2 lg:top-6 lg:right-6 lg:left-auto lg:translate-x-0 z-50 bg-white/80 backdrop-blur-lg rounded-full shadow-lg px-4 py-2 md:px-5 md:py-2 lg:px-6 lg:py-3">
+      <ul className="flex items-center gap-6">
+        {links.map((link) => (
+          <li key={link.id}>
+            <a
+              href={`#${link.id}`}
+              className={`transition font-medium ${
+                active === link.id
+                  ? "text-blue-600"
+                  : "text-slate-600 hover:text-black"
+              }`}
+            >
+              {link.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
   );
 }

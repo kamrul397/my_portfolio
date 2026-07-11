@@ -4,7 +4,7 @@ import Link from "next/link";
 export default function Hero() {
   return (
     // Reduced padding and minimum screen height for a more compact, structured layout
-    <section className="py-8 md:py-12 flex items-center min-h-[60vh] px-6 sm:px-12">
+    <section className="py-8 md:py-12 flex items-center min-h-[60vh] px-6 sm:px-12 mt-8 ">
       {/* 1. The Main Responsive Grid Container */}
       <div className="grid md:grid-cols-12 gap-8 md:gap-12 items-center w-full">
         {/* 2. LEFT SIDE: The Content Column */}
@@ -39,7 +39,11 @@ export default function Hero() {
           {/* Subdescription (Tighter margins and spacing) */}
           <p className="mt-5 text-base md:text-lg text-slate-600 max-w-xl leading-relaxed mx-auto md:mx-0">
             I build fast, responsive, and highly functional web applications
-            using **React**, **Next.js**, and modern frontend ecosystems.
+            using{" "}
+            <strong className="font-semibold text-slate-900">React</strong>,{" "}
+            <strong className="font-semibold text-slate-900">Next.js</strong>,
+            and modern frontend ecosystems. Focused on writing clean,
+            maintainable code.
           </p>
 
           {/* Interactive Action Buttons (Slightly more compact padding) */}
@@ -81,16 +85,20 @@ export default function Hero() {
             <div className="absolute inset-0 rounded-full border border-blue-100/50 pointer-events-none"></div>
           </div>
 
-          {/* SOCIAL LINKS ROW - PERFECTLY POSITIONED UNDER PIC */}
-          <div className="flex items-center gap-4 mt-2">
+          {/* SOCIAL LINKS ROW - 4 ICONS FIXED IN ONE ROW */}
+          <div className="flex flex-nowrap items-center justify-center gap-2 mt-2 w-full max-w-[340px] sm:max-w-none">
             <Link
               href="https://github.com/kamrul397"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-1.5 bg-white border border-slate-200 px-3.5 py-1.5 rounded-full text-xs font-bold text-slate-600 hover:text-slate-900 hover:border-slate-400 shadow-xs transition"
+              className="flex items-center gap-1 bg-white border border-slate-200 px-2.5 py-1.5 rounded-full text-[11px] font-bold text-slate-600 hover:text-slate-900 hover:border-slate-400 shadow-xs transition whitespace-nowrap"
             >
               {/* GitHub SVG Icon */}
-              <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+              <svg
+                className="w-3.5 h-3.5"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+              >
                 <path
                   fillRule="evenodd"
                   clipRule="evenodd"
@@ -101,13 +109,17 @@ export default function Hero() {
             </Link>
 
             <Link
-              href="https://linkedin.com" // Put your exact full LinkedIn URL here
+              href="https://linkedin.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-1.5 bg-white border border-slate-200 px-3.5 py-1.5 rounded-full text-xs font-bold text-blue-600 hover:text-blue-700 hover:border-blue-300 shadow-xs transition"
+              className="flex items-center gap-1 bg-white border border-slate-200 px-2.5 py-1.5 rounded-full text-[11px] font-bold text-blue-600 hover:text-blue-700 hover:border-blue-300 shadow-xs transition whitespace-nowrap"
             >
               {/* LinkedIn SVG Icon */}
-              <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+              <svg
+                className="w-3.5 h-3.5"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+              >
                 <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
               </svg>
               LinkedIn
@@ -117,10 +129,14 @@ export default function Hero() {
               href="https://wa.me/8801894565173"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-1.5 bg-white border border-slate-200 px-3.5 py-1.5 rounded-full text-xs font-bold text-emerald-600 hover:text-emerald-700 hover:border-emerald-300 shadow-xs transition"
+              className="flex items-center gap-1 bg-white border border-slate-200 px-2.5 py-1.5 rounded-full text-[11px] font-bold text-emerald-600 hover:text-emerald-700 hover:border-emerald-300 shadow-xs transition whitespace-nowrap"
             >
               {/* WhatsApp SVG Icon */}
-              <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+              <svg
+                className="w-3.5 h-3.5"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+              >
                 <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.513 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.713-1.455L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.42 9.863-9.855.001-2.633-1.02-5.107-2.875-6.964C16.547 1.928 14.08 .87 11.438.87 6.005.87 1.58 5.289 1.577 10.725c-.001 1.672.435 3.3 1.262 4.73L1.87 19.91l4.777-1.254z" />
               </svg>
               WhatsApp

@@ -4,3 +4,7 @@
   /* This connects your font variable directly inside Tailwind v4 */
   --font-sans: var(--font-roboto-condensed);
 }
+
+html {
+  scroll-behavior: smooth;
+}
