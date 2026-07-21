@@ -115,7 +115,7 @@ https://github.com/kamrul397/CareFlow
 
 ---
 
-## 📸 Preview
+<!-- ## 📸 Preview
 
 > Add screenshots inside a **screenshots/** folder.
 
@@ -135,7 +135,7 @@ Then display them like this:
 ![Home](screenshots/home.png)
 ```
 
----
+--- -->
 
 ## 🚀 Getting Started
 
