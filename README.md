@@ -1,36 +1,183 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+![Next.js](https://img.shields.io/badge/Next.js-000?logo=next.js)
+![React](https://img.shields.io/badge/React-20232A?logo=react)
+![TailwindCSS](https://img.shields.io/badge/TailwindCSS-38B2AC?logo=tailwind-css)
+![License](https://img.shields.io/badge/License-MIT-blue.svg)
+![Vercel](https://img.shields.io/badge/Deploy-Vercel-black?logo=vercel)
 
-## Getting Started
+# 💼 Kamrul Islam - Portfolio
 
-First, run the development server:
+A modern, responsive developer portfolio built with **Next.js**, showcasing my skills, experience, and featured full-stack projects.
+
+## 🌐 Live Website
+
+👉 https://my-portfolio-theta-rose-11.vercel.app/
+
+---
+
+## ✨ Features
+
+- Modern and responsive UI
+- Smooth scrolling navigation
+- Professional Hero section
+- About Me section
+- Technical Skills
+- Featured Projects
+- Contact section
+- Download Resume
+- Mobile-friendly design
+- Optimized images with Next.js Image
+
+---
+
+## 🛠️ Tech Stack
+
+### Frontend
+
+- Next.js
+- React.js
+- JavaScript (ES6+)
+- Tailwind CSS
+- Framer Motion
+
+### Tools
+
+- Git
+- GitHub
+- Vercel
+
+---
+
+## 📂 Featured Projects
+
+### 🚀 TechNova Store
+
+Modern full-stack e-commerce platform.
+
+**Tech**
+
+- Next.js
+- Express.js
+- MongoDB
+- Firebase
+- Cloudinary
+- Tailwind CSS
+
+**Live**
+
+https://revenio-client.vercel.app
+
+**Repository**
+
+https://github.com/kamrul397/revenio-store
+
+---
+
+### 🚀 ClubSphere
+
+Full-stack club management platform.
+
+**Tech**
+
+- React
+- Node.js
+- Express.js
+- MongoDB
+- Tailwind CSS
+
+**Live**
+
+https://clubspere-firebase.web.app
+
+**Repository**
+
+https://github.com/kamrul397/ClubSphere_Frontend
+
+---
+
+### 🚀 Care.xyz
+
+On-demand home care services platform.
+
+**Tech**
+
+- Next.js
+- MongoDB
+- Firebase
+- Tailwind CSS
+
+**Live**
+
+https://care-flow-lyart.vercel.app/
+
+**Repository**
+
+https://github.com/kamrul397/CareFlow
+
+---
+
+## 📸 Preview
+
+> Add screenshots inside a **screenshots/** folder.
+
+Example:
+
+```
+screenshots/
+├── home.png
+├── about.png
+├── projects.png
+└── contact.png
+```
+
+Then display them like this:
+
+```md
+![Home](screenshots/home.png)
+```
+
+---
+
+## 🚀 Getting Started
+
+Clone the repository
+
+```bash
+git clone https://github.com/kamrul397/my-portfolio.git
+```
+
+Install dependencies
+
+```bash
+npm install
+```
+
+Run locally
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Visit
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+```
+http://localhost:3000
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## 📧 Contact
 
-To learn more about Next.js, take a look at the following resources:
+**Kamrul Islam**
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Portfolio  
+https://my-portfolio-theta-rose-11.vercel.app/
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+GitHub  
+https://github.com/kamrul397
 
-## Deploy on Vercel
+Email  
+kamrulislam25262800@gmail.com
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+⭐ If you like this project, consider giving it a star!
