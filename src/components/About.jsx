@@ -58,7 +58,7 @@ export default function About() {
           {/* EYE-CATCHING "SEE RESUME" BUTTON */}
           <div className="mt-8">
             <a
-              href="/resume.pdf"
+              href="/My Resume 21-07-2026.pdf"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2.5 bg-slate-950 text-white font-bold text-sm px-6 py-3.5 rounded-xl shadow-md hover:bg-slate-800 transition duration-200 group active:scale-98"

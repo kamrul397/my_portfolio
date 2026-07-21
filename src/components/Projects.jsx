@@ -16,21 +16,40 @@ const projectsData = [
       "JWT Authentication",
     ],
     liveLink: "https://clubspere-firebase.web.app",
-    githubLink: "https://github.com/kamrul397/ClubSphere_Frontend.git",
+    githubLink: "https://github.com/kamrul397/ClubSphere_Frontend",
     image: "/project1.png",
   },
   {
     id: 2,
-    title: "Care.xyz - On-Demand Home Care Services Platform",
+    title: "TechNova Store",
     description:
-      "Care.xyz is a responsive, full-stack web application built using Next.js (App Router) and MongoDB. The platform allows users to book customized, professional home care services—ranging from baby care and babysitting to elderly support and sick patient care—across major structural areas in Dhaka and Chattogram.",
-    tags: ["Next.js", "MongoDB", "Tailwind CSS"],
-    liveLink: "https://care-flow-lyart.vercel.app/",
-    githubLink: "https://github.com/kamrul397/CareFlow.git",
+      "TechNova Store is a modern full-stack e-commerce platform built with Next.js and Express.js. It features Firebase Authentication (Email & Google Sign-In), secure protected routes, complete product CRUD operations, Cloudinary image uploads, advanced search and filtering, responsive UI, and deployment on Vercel and Render.",
+    tags: [
+      "Next.js",
+      "React",
+      "Node.js",
+      "Express.js",
+      "MongoDB",
+      "Firebase",
+      "Cloudinary",
+      "Tailwind CSS",
+      "DaisyUI",
+    ],
+    liveLink: "https://revenio-client.vercel.app",
+    githubLink: "https://github.com/kamrul397/revenio-store",
     image: "/project2.png",
   },
+  {
+    id: 3,
+    title: "Care.xyz - On-Demand Home Care Services Platform",
+    description:
+      "Care.xyz is a responsive full-stack web application built with Next.js (App Router) and MongoDB. The platform enables users to book professional home care services—including baby care, elderly care, babysitting, and patient support—through an intuitive, mobile-friendly interface.",
+    tags: ["Next.js", "MongoDB", "Tailwind CSS", "Firebase"],
+    liveLink: "https://care-flow-lyart.vercel.app/",
+    githubLink: "https://github.com/kamrul397/CareFlow",
+    image: "/project3.png",
+  },
 ];
-
 export default function Projects() {
   return (
     <section id="projects" className="py-5 px-6 sm:px-12 scroll-mt-10">
@@ -60,6 +79,8 @@ export default function Projects() {
                   src={project.image}
                   alt={project.title}
                   fill
+                  priority={project.id === 1}
+                  sizes="(max-width: 768px) 100vw, 50vw"
                   className="object-cover"
                 />
               </div>
