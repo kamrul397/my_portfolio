@@ -4,7 +4,7 @@ import Link from "next/link";
 export default function Hero() {
   return (
     // Reduced padding and minimum screen height for a more compact, structured layout
-    <section className="py-8 md:py-12 flex items-center min-h-[60vh] px-6 sm:px-12 mt-8 ">
+    <section id="home" className="py-8 md:py-12 flex items-center min-h-[60vh] px-6 sm:px-12 mt-8 scroll-mt-16">
       {/* 1. The Main Responsive Grid Container */}
       <div className="grid md:grid-cols-12 gap-8 md:gap-12 items-center w-full">
         {/* 2. LEFT SIDE: The Content Column */}
