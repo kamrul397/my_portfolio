@@ -51,30 +51,30 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="relative py-16 px-4 sm:px-8 lg:px-12 scroll-mt-16 bg-slate-50/70 rounded-3xl my-12 border border-slate-200/80 shadow-xs overflow-hidden"
+      className="relative py-16 px-4 sm:px-8 lg:px-12 scroll-mt-16 bg-slate-50/70 dark:bg-slate-900/60 rounded-3xl my-12 border border-slate-200/80 dark:border-slate-800 shadow-xs overflow-hidden transition-colors"
     >
-      {/* Eye-catching ambient glow spheres */}
-      <div className="absolute -top-24 -right-24 w-80 h-80 bg-blue-400/10 rounded-full blur-3xl pointer-events-none"></div>
-      <div className="absolute -bottom-24 -left-24 w-80 h-80 bg-indigo-400/10 rounded-full blur-3xl pointer-events-none"></div>
+      {/* Ambient glow spheres */}
+      <div className="absolute -top-24 -right-24 w-80 h-80 bg-blue-400/10 dark:bg-blue-600/15 rounded-full blur-3xl pointer-events-none"></div>
+      <div className="absolute -bottom-24 -left-24 w-80 h-80 bg-indigo-400/10 dark:bg-indigo-600/15 rounded-full blur-3xl pointer-events-none"></div>
 
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="grid lg:grid-cols-12 gap-12 items-start">
           {/* Left Column: Direct Contact Details & Info Cards */}
           <div className="lg:col-span-5 flex flex-col justify-between h-full space-y-8">
             <div>
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-100/70 text-blue-700 text-xs font-bold tracking-wider uppercase mb-4 border border-blue-200/60">
-                <span className="w-2 h-2 rounded-full bg-blue-600 animate-pulse"></span>
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-100/70 dark:bg-slate-800 text-blue-700 dark:text-sky-400 text-xs font-bold tracking-wider uppercase mb-4 border border-blue-200/60 dark:border-slate-700">
+                <span className="w-2 h-2 rounded-full bg-blue-600 dark:bg-sky-400 animate-pulse"></span>
                 GET IN TOUCH
               </div>
 
-              <h2 className="text-3xl sm:text-5xl font-black tracking-tight text-slate-900 leading-tight">
-                Get <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600">In Touch</span>
+              <h2 className="text-3xl sm:text-5xl font-black tracking-tight text-slate-900 dark:text-white leading-tight">
+                Get <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 dark:from-sky-400 dark:via-blue-400 dark:to-indigo-300">In Touch</span>
               </h2>
-              <h3 className="text-xl sm:text-2xl font-bold text-slate-700 mt-2 leading-snug">
-                Let&apos;s Build Something <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">Great Together</span>
+              <h3 className="text-xl sm:text-2xl font-bold text-slate-700 dark:text-slate-200 mt-2 leading-snug">
+                Let&apos;s Build Something <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-sky-400 dark:to-indigo-400">Great Together</span>
               </h3>
 
-              <p className="mt-4 text-slate-600 text-base leading-relaxed">
+              <p className="mt-4 text-slate-600 dark:text-slate-300 text-base leading-relaxed font-normal">
                 Whether you have an exciting job opportunity, a project to discuss, or just want to say hi, feel free to drop me a message or connect directly!
               </p>
             </div>
@@ -82,18 +82,18 @@ export default function Contact() {
             {/* Direct Contact Action Cards */}
             <div className="space-y-4">
               {/* Email Card */}
-              <div className="group flex items-center justify-between p-4 rounded-2xl bg-white border border-slate-200/80 shadow-xs hover:border-blue-300 hover:shadow-md transition-all duration-200">
+              <div className="group flex items-center justify-between p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-xs hover:border-blue-300 dark:hover:border-slate-700 hover:shadow-md transition-all duration-200">
                 <div className="flex items-center gap-3.5 min-w-0 pr-2">
-                  <div className="w-11 h-11 flex items-center justify-center shrink-0 rounded-xl bg-blue-50 text-blue-600 group-hover:scale-105 transition-transform">
+                  <div className="w-11 h-11 flex items-center justify-center shrink-0 rounded-xl bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-sky-400 group-hover:scale-105 transition-transform border border-transparent dark:border-blue-900/40">
                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                     </svg>
                   </div>
                   <div className="min-w-0">
-                    <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wider block">Email Address</span>
+                    <span className="text-[11px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider block">Email Address</span>
                     <a
                       href={`mailto:${emailAddress}`}
-                      className="text-sm font-bold text-slate-900 hover:text-blue-600 transition-colors truncate block"
+                      className="text-sm font-bold text-slate-900 dark:text-white hover:text-blue-600 dark:hover:text-sky-400 transition-colors truncate block"
                     >
                       {emailAddress}
                     </a>
@@ -102,7 +102,7 @@ export default function Contact() {
                 <button
                   type="button"
                   onClick={handleCopyEmail}
-                  className="shrink-0 text-xs font-semibold px-3 py-1.5 rounded-lg bg-slate-100 text-slate-700 hover:bg-blue-600 hover:text-white transition-colors"
+                  className="shrink-0 text-xs font-semibold px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:bg-blue-600 hover:text-white dark:hover:bg-blue-600 transition-colors cursor-pointer"
                   title="Copy Email"
                 >
                   {copiedEmail ? "Copied! ✓" : "Copy"}
@@ -110,20 +110,20 @@ export default function Contact() {
               </div>
 
               {/* WhatsApp Card */}
-              <div className="group flex items-center justify-between p-4 rounded-2xl bg-white border border-slate-200/80 shadow-xs hover:border-emerald-300 hover:shadow-md transition-all duration-200">
+              <div className="group flex items-center justify-between p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-xs hover:border-emerald-300 dark:hover:border-slate-700 hover:shadow-md transition-all duration-200">
                 <div className="flex items-center gap-3.5">
-                  <div className="w-11 h-11 flex items-center justify-center shrink-0 rounded-xl bg-emerald-50 text-emerald-600 group-hover:scale-105 transition-transform">
+                  <div className="w-11 h-11 flex items-center justify-center shrink-0 rounded-xl bg-emerald-50 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 group-hover:scale-105 transition-transform border border-transparent dark:border-emerald-900/40">
                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
                     </svg>
                   </div>
                   <div>
-                    <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wider block">WhatsApp & Direct Chat</span>
+                    <span className="text-[11px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider block">WhatsApp & Direct Chat</span>
                     <a
                       href={whatsappLink}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-sm font-bold text-slate-900 hover:text-emerald-600 transition-colors block"
+                      className="text-sm font-bold text-slate-900 dark:text-white hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors block"
                     >
                       {whatsappNumber}
                     </a>
@@ -133,34 +133,34 @@ export default function Contact() {
                   href={whatsappLink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="shrink-0 text-xs font-semibold px-3 py-1.5 rounded-lg bg-emerald-50 text-emerald-700 border border-emerald-200/60 hover:bg-emerald-600 hover:text-white transition-colors"
+                  className="shrink-0 text-xs font-semibold px-3 py-1.5 rounded-lg bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 border border-emerald-200/60 dark:border-emerald-800 hover:bg-emerald-600 hover:text-white transition-colors"
                 >
                   Chat Now →
                 </a>
               </div>
 
               {/* Location Card */}
-              <div className="flex items-center gap-3.5 p-4 rounded-2xl bg-white border border-slate-200/80 shadow-xs">
-                <div className="w-11 h-11 flex items-center justify-center shrink-0 rounded-xl bg-indigo-50 text-indigo-600">
+              <div className="flex items-center gap-3.5 p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-xs">
+                <div className="w-11 h-11 flex items-center justify-center shrink-0 rounded-xl bg-indigo-50 dark:bg-indigo-950/60 text-indigo-600 dark:text-indigo-400 border border-transparent dark:border-indigo-900/40">
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                   </svg>
                 </div>
                 <div>
-                  <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wider block">Current Location</span>
-                  <p className="text-sm font-bold text-slate-900">Netrakona, Bangladesh</p>
+                  <span className="text-[11px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider block">Current Location</span>
+                  <p className="text-sm font-bold text-slate-900 dark:text-white">Netrakona, Bangladesh</p>
                 </div>
               </div>
             </div>
 
             {/* Live Availability Badge */}
-            <div className="p-4 rounded-2xl bg-gradient-to-r from-emerald-50 to-teal-50 border border-emerald-200/80 flex items-center gap-3">
+            <div className="p-4 rounded-2xl bg-gradient-to-r from-emerald-50 to-teal-50 dark:from-emerald-950/40 dark:to-teal-950/40 border border-emerald-200/80 dark:border-emerald-800/80 flex items-center gap-3">
               <span className="relative flex h-3 w-3 shrink-0">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
               </span>
-              <p className="text-xs font-bold text-emerald-800">
+              <p className="text-xs font-bold text-emerald-800 dark:text-emerald-300">
                 Open to Remote & On-Site Junior Full-Stack Roles
               </p>
             </div>
@@ -170,11 +170,11 @@ export default function Contact() {
           <div className="lg:col-span-7 w-full">
             <form
               onSubmit={handleSubmit}
-              className="bg-white p-6 sm:p-10 rounded-3xl border border-slate-200/80 shadow-xl shadow-slate-200/40 space-y-6 relative overflow-hidden"
+              className="bg-white dark:bg-slate-900 p-6 sm:p-10 rounded-3xl border border-slate-200/80 dark:border-slate-800 shadow-xl shadow-slate-200/40 dark:shadow-none space-y-6 relative overflow-hidden"
             >
-              <div className="border-b border-slate-100 pb-4 mb-2">
-                <h3 className="text-xl font-extrabold text-slate-900">Send Me a Message</h3>
-                <p className="text-xs text-slate-500 mt-1">I usually respond within 12-24 hours.</p>
+              <div className="border-b border-slate-100 dark:border-slate-800 pb-4 mb-2">
+                <h3 className="text-xl font-extrabold text-slate-900 dark:text-white">Send Me a Message</h3>
+                <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">I usually respond within 12-24 hours.</p>
               </div>
 
               {/* Anti-Spam Honeypot */}
@@ -187,7 +187,7 @@ export default function Contact() {
 
               <div className="grid sm:grid-cols-2 gap-5">
                 <div className="flex flex-col gap-1.5">
-                  <label htmlFor="name" className="text-xs font-bold text-slate-700 uppercase tracking-wider">
+                  <label htmlFor="name" className="text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">
                     Your Name <span className="text-rose-500">*</span>
                   </label>
                   <input
@@ -196,12 +196,12 @@ export default function Contact() {
                     type="text"
                     required
                     placeholder="John Doe"
-                    className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 text-slate-900 placeholder-slate-400 font-medium focus:outline-none focus:bg-white focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all duration-200 text-sm"
+                    className="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/80 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 font-medium focus:outline-none focus:bg-white dark:focus:bg-slate-800 focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all duration-200 text-sm"
                   />
                 </div>
 
                 <div className="flex flex-col gap-1.5">
-                  <label htmlFor="email" className="text-xs font-bold text-slate-700 uppercase tracking-wider">
+                  <label htmlFor="email" className="text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">
                     Your Email <span className="text-rose-500">*</span>
                   </label>
                   <input
@@ -210,13 +210,13 @@ export default function Contact() {
                     type="email"
                     required
                     placeholder="john@example.com"
-                    className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 text-slate-900 placeholder-slate-400 font-medium focus:outline-none focus:bg-white focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all duration-200 text-sm"
+                    className="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/80 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 font-medium focus:outline-none focus:bg-white dark:focus:bg-slate-800 focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all duration-200 text-sm"
                   />
                 </div>
               </div>
 
               <div className="flex flex-col gap-1.5">
-                <label htmlFor="subject" className="text-xs font-bold text-slate-700 uppercase tracking-wider">
+                <label htmlFor="subject" className="text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">
                   Subject
                 </label>
                 <input
@@ -224,12 +224,12 @@ export default function Contact() {
                   name="subject"
                   type="text"
                   placeholder="Job Opportunity / Project Inquiry"
-                  className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 text-slate-900 placeholder-slate-400 font-medium focus:outline-none focus:bg-white focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all duration-200 text-sm"
+                  className="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/80 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 font-medium focus:outline-none focus:bg-white dark:focus:bg-slate-800 focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all duration-200 text-sm"
                 />
               </div>
 
               <div className="flex flex-col gap-1.5">
-                <label htmlFor="message" className="text-xs font-bold text-slate-700 uppercase tracking-wider">
+                <label htmlFor="message" className="text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">
                   Message <span className="text-rose-500">*</span>
                 </label>
                 <textarea
@@ -238,7 +238,7 @@ export default function Contact() {
                   rows={4}
                   required
                   placeholder="Tell me about your project, timeline, or position details..."
-                  className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 text-slate-900 placeholder-slate-400 font-medium focus:outline-none focus:bg-white focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all duration-200 resize-none text-sm leading-relaxed"
+                  className="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/80 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 font-medium focus:outline-none focus:bg-white dark:focus:bg-slate-800 focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all duration-200 resize-none text-sm leading-relaxed"
                 ></textarea>
               </div>
 
@@ -270,16 +270,16 @@ export default function Contact() {
                   <div
                     className={`w-full sm:w-auto px-4 py-2.5 rounded-xl text-xs font-semibold flex items-center gap-2 ${
                       status.includes("successfully")
-                        ? "bg-emerald-50 text-emerald-700 border border-emerald-200"
-                        : "bg-rose-50 text-rose-700 border border-rose-200"
+                        ? "bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800"
+                        : "bg-rose-50 dark:bg-rose-950/60 text-rose-700 dark:text-rose-300 border border-rose-200 dark:border-rose-800"
                     }`}
                   >
                     {status.includes("successfully") ? (
-                      <svg className="w-4 h-4 text-emerald-600 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
                       </svg>
                     ) : (
-                      <svg className="w-4 h-4 text-rose-600 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className="w-4 h-4 text-rose-600 dark:text-rose-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
                       </svg>
                     )}

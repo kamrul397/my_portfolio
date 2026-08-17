@@ -5,6 +5,17 @@ import React, { useState } from "react";
 const skillsData = [
   // Frontend
   {
+    name: "TypeScript",
+    subtitle: "Typed JavaScript & Schemas",
+    category: "frontend",
+    level: "Core Stack",
+    icon: (
+      <svg className="w-6 h-6 text-blue-600" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M1.125 0C.502 0 0 .502 0 1.125v21.75C0 23.498.502 24 1.125 24h21.75c.623 0 1.125-.502 1.125-1.125V1.125C24 .502 23.498 0 22.875 0H1.125zm16.71 8.878c.957 0 1.83.275 2.617.825.787.55 1.34 1.34 1.66 2.37l-2.616 1.08c-.18-.55-.49-.97-.93-1.26-.44-.29-1-.44-1.68-.44-.75 0-1.34.2-1.77.6-.43.4-.645.92-.645 1.56 0 .59.195 1.05.585 1.38.39.33 1.02.6 1.89.81l1.41.36c1.4.35 2.455.93 3.165 1.74.71.81 1.065 1.85 1.065 3.12 0 1.44-.51 2.61-1.53 3.51-1.02.9-2.37 1.35-4.05 1.35-1.62 0-2.985-.45-4.095-1.35-1.11-.9-1.725-2.13-1.845-3.69l2.79-.48c.12.87.51 1.54 1.17 2.01.66.47 1.47.7 2.43.7.87 0 1.56-.22 2.07-.66.51-.44.765-.99.765-1.65 0-.57-.2-1.03-.6-1.38-.4-.35-1.05-.63-1.95-.84l-1.35-.33c-1.38-.33-2.4-.89-3.06-1.68-.66-.79-.99-1.78-.99-2.97 0-1.38.495-2.5 1.485-3.36.99-.86 2.28-1.29 3.87-1.29zm-9.36.21v14.43H5.625V9.088H1.68V6.75h10.74v2.338H8.475z" />
+      </svg>
+    ),
+  },
+  {
     name: "Next.js 16",
     subtitle: "Full-Stack Framework",
     category: "frontend",
@@ -138,6 +149,17 @@ const skillsData = [
     ),
   },
   {
+    name: "Stripe API",
+    subtitle: "Subscriptions & Webhooks",
+    category: "tools",
+    level: "Core Stack",
+    icon: (
+      <svg className="w-6 h-6 text-indigo-500" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M13.976 9.15c-2.172-.806-3.356-1.426-3.356-2.409 0-.831.683-1.305 1.901-1.305 2.227 0 4.515.858 6.09 1.631l.89-5.494C18.252.975 15.697 0 12.165 0 9.667 0 7.589.654 6.104 1.872 4.56 3.147 3.757 4.992 3.757 7.218c0 4.839 3.771 6.552 6.862 7.707 2.298.857 3.328 1.579 3.328 2.583 0 .979-.861 1.554-2.316 1.554-2.168 0-5.187-1.127-7.234-2.417L3.48 22.25c2.09 1.134 5.378 1.75 8.784 1.75 2.66 0 4.845-.632 6.368-1.854 1.611-1.293 2.454-3.147 2.454-5.467 0-5.06-3.882-6.643-7.11-7.529z" />
+      </svg>
+    ),
+  },
+  {
     name: "Vercel & Render",
     subtitle: "Cloud Hosting & Deployment",
     category: "tools",
@@ -221,23 +243,23 @@ export default function TechStack() {
         {filteredSkills.map((skill, index) => (
           <div
             key={index}
-            className="group relative flex items-center justify-between p-4 sm:p-5 rounded-2xl bg-white border border-slate-200/80 shadow-xs hover:border-blue-300 hover:shadow-xl hover:shadow-blue-500/5 hover:-translate-y-1 transition-all duration-300 overflow-hidden"
+            className="group relative flex items-center justify-between p-4 sm:p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-xs hover:border-blue-300 dark:hover:border-slate-700 hover:shadow-xl hover:shadow-blue-500/5 dark:hover:shadow-sky-500/5 hover:-translate-y-1 transition-all duration-300 overflow-hidden"
           >
             {/* Left Accent Highlight Bar */}
             <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-blue-500 to-indigo-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
 
             <div className="flex items-center gap-4 min-w-0 pr-2">
               {/* Icon Wrapper */}
-              <div className="w-12 h-12 flex items-center justify-center shrink-0 rounded-xl bg-gradient-to-br from-slate-50 to-slate-100/80 border border-slate-200/80 shadow-2xs group-hover:bg-blue-50/70 group-hover:border-blue-200 group-hover:scale-105 group-hover:rotate-2 transition-all duration-300">
+              <div className="w-12 h-12 flex items-center justify-center shrink-0 rounded-xl bg-gradient-to-br from-slate-50 to-slate-100/80 dark:from-slate-800 dark:to-slate-850 border border-slate-200/80 dark:border-slate-750 shadow-2xs group-hover:bg-blue-50/70 dark:group-hover:bg-slate-750 group-hover:border-blue-200 group-hover:scale-105 group-hover:rotate-2 transition-all duration-300">
                 {skill.icon}
               </div>
 
               {/* Text Container */}
               <div className="min-w-0 flex flex-col justify-center">
-                <h3 className="font-bold text-slate-900 text-sm sm:text-base group-hover:text-blue-600 transition-colors truncate leading-snug">
+                <h3 className="font-bold text-slate-900 dark:text-white text-sm sm:text-base group-hover:text-blue-600 dark:group-hover:text-sky-400 transition-colors truncate leading-snug">
                   {skill.name}
                 </h3>
-                <p className="text-xs text-slate-500 truncate mt-0.5 font-medium">
+                <p className="text-xs text-slate-500 dark:text-slate-400 truncate mt-0.5 font-medium">
                   {skill.subtitle}
                 </p>
               </div>
@@ -247,10 +269,10 @@ export default function TechStack() {
             <span
               className={`shrink-0 text-[10px] font-extrabold px-2.5 py-1 rounded-lg uppercase tracking-wider transition-colors ${
                 skill.level === "Core Stack"
-                  ? "bg-blue-50 text-blue-700 border border-blue-100/80 group-hover:bg-blue-600 group-hover:text-white"
+                  ? "bg-blue-50 dark:bg-blue-950/60 text-blue-700 dark:text-sky-300 border border-blue-100/80 dark:border-blue-900/60 group-hover:bg-blue-600 group-hover:text-white"
                   : skill.level === "Advanced"
-                  ? "bg-indigo-50 text-indigo-700 border border-indigo-100/80 group-hover:bg-indigo-600 group-hover:text-white"
-                  : "bg-emerald-50 text-emerald-700 border border-emerald-100/80 group-hover:bg-emerald-600 group-hover:text-white"
+                  ? "bg-indigo-50 dark:bg-indigo-950/60 text-indigo-700 dark:text-indigo-300 border border-indigo-100/80 dark:border-indigo-900/60 group-hover:bg-indigo-600 group-hover:text-white"
+                  : "bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 border border-emerald-100/80 dark:border-emerald-900/60 group-hover:bg-emerald-600 group-hover:text-white"
               }`}
             >
               {skill.level}

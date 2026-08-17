@@ -31,23 +31,83 @@ A modern, responsive developer portfolio built with **Next.js**, showcasing my s
 
 ## 🛠️ Tech Stack
 
-### Frontend
+### Frontend & Languages
 
-- Next.js
+- TypeScript
+- Next.js (App Router)
 - React.js
 - JavaScript (ES6+)
-- Tailwind CSS
+- Tailwind CSS v4
+- TanStack Query v5
 - Framer Motion
 
-### Tools
+### Backend & Database
 
-- Git
-- GitHub
-- Vercel
+- Node.js
+- Express.js
+- MongoDB Atlas & Mongoose
+- Stripe API & Webhooks
+- Firebase Auth
+
+### Tools & DevOps
+
+- Git & GitHub
+- Vercel & Render
+- Postman
 
 ---
 
 ## 📂 Featured Projects
+
+### 🚀 FitPass
+
+Production-grade full-stack SaaS gym membership subscription platform built with strict TypeScript and Stripe.
+
+**Tech**
+
+- TypeScript
+- Next.js 16
+- React 19
+- Node.js / Express.js (v5)
+- MongoDB Atlas / Mongoose
+- Stripe API & Webhooks
+- TanStack Query v5
+- Firebase Auth
+- Tailwind CSS v4
+
+**Live**
+
+https://fit-pass-omega.vercel.app
+
+**Repository**
+
+https://github.com/kamrul397/fitPass
+
+---
+
+### 🚀 CareerConnect
+
+Full-stack job search & recruitment platform with role-based access control and PDF resume management.
+
+**Tech**
+
+- Next.js 16
+- React 19
+- Node.js / Express.js
+- MongoDB
+- TanStack Query v5
+- Firebase Auth
+- Tailwind CSS
+
+**Live**
+
+https://career-connect-iota-pied.vercel.app
+
+**Repository**
+
+https://github.com/kamrul397/careerConnect
+
+---
 
 ### 🚀 TechNova Store
 
