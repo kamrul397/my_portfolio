@@ -137,7 +137,7 @@ export default function About() {
               </button>
 
               <a
-                href="/resume after careerConnect.pdf"
+                href="/Kamrul_Resume.pdf"
                 download="Kamrul_Resume.pdf"
                 className="inline-flex items-center gap-2 border-2 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 font-bold text-sm px-5 py-3.5 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800 hover:border-slate-300 dark:hover:border-slate-600 transition duration-200 active:scale-98"
               >
