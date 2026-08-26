@@ -102,8 +102,8 @@ export default function About() {
                   <span className="text-2xl sm:text-3xl font-extrabold text-indigo-600 dark:text-indigo-400">TypeScript</span>
                   <p className="text-xs font-semibold text-slate-500 dark:text-slate-400 mt-1 uppercase tracking-wide">+ Next.js Core</p>
                 </div>
-                <div className="text-center sm:text-left">
-                  <span className="text-2xl sm:text-3xl font-extrabold text-emerald-600 dark:text-emerald-400">100%</span>
+                <div className="text-center sm:text-left ml-8">
+                  <span className="text-2xl  sm:text-3xl font-extrabold text-emerald-600 dark:text-emerald-400">100%</span>
                   <p className="text-xs font-semibold text-slate-500 dark:text-slate-400 mt-1 uppercase tracking-wide">Responsive UX</p>
                 </div>
               </div>
@@ -137,7 +137,7 @@ export default function About() {
               </button>
 
               <a
-                href="/Kamrul_Resume.pdf"
+                href="/my resume 23 August.pdf"
                 download="Kamrul_Resume.pdf"
                 className="inline-flex items-center gap-2 border-2 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 font-bold text-sm px-5 py-3.5 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800 hover:border-slate-300 dark:hover:border-slate-600 transition duration-200 active:scale-98"
               >
