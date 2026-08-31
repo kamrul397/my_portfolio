@@ -19,14 +19,21 @@ export default function TerminalWidget({ onOpenResume }) {
     },
   ]);
 
-  const terminalEndRef = useRef(null);
+  const terminalLogsRef = useRef(null);
   const inputRef = useRef(null);
+  const isFirstMount = useRef(true);
 
   const scrollToBottom = () => {
-    terminalEndRef.current?.scrollIntoView({ behavior: "smooth" });
+    if (terminalLogsRef.current) {
+      terminalLogsRef.current.scrollTop = terminalLogsRef.current.scrollHeight;
+    }
   };
 
   useEffect(() => {
+    if (isFirstMount.current) {
+      isFirstMount.current = false;
+      return;
+    }
     scrollToBottom();
   }, [history]);
 
@@ -202,6 +209,7 @@ export default function TerminalWidget({ onOpenResume }) {
 
       {/* Terminal Logs & Output */}
       <div
+        ref={terminalLogsRef}
         className="p-4 sm:p-5 max-h-72 overflow-y-auto space-y-2 cursor-text"
         onClick={() => inputRef.current?.focus()}
       >
@@ -239,7 +247,6 @@ export default function TerminalWidget({ onOpenResume }) {
             className="w-full bg-transparent text-slate-100 placeholder-slate-600 focus:outline-none font-mono text-xs sm:text-sm"
           />
         </div>
-        <div ref={terminalEndRef} />
       </div>
     </div>
   );
