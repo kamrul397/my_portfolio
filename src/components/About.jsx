@@ -2,6 +2,8 @@
 
 import React, { useState } from "react";
 import ResumeModal from "@/components/ResumeModal";
+import GitHubStats from "@/components/GitHubStats";
+import TerminalWidget from "@/components/TerminalWidget";
 
 const philosophyPillars = [
   {
@@ -195,6 +197,16 @@ export default function About() {
             </div>
           </div>
         </div>
+
+        {/* Live GitHub Stats & Developer Terminal Sandbox Row */}
+        <div className="mt-14 pt-10 border-t border-slate-100 dark:border-slate-800 grid lg:grid-cols-12 gap-8 items-start">
+          <div className="lg:col-span-6">
+            <GitHubStats />
+          </div>
+          <div className="lg:col-span-6">
+            <TerminalWidget onOpenResume={() => setIsResumeOpen(true)} />
+          </div>
+        </div>
       </section>
 
       {/* Embedded Resume Modal */}
@@ -205,3 +217,4 @@ export default function About() {
     </>
   );
 }
+

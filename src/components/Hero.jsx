@@ -47,19 +47,43 @@ export default function Hero() {
           </p>
 
           {/* Interactive Action Buttons */}
-          <div className="mt-8 flex flex-wrap gap-4 justify-center md:justify-start">
+          <div className="mt-8 flex flex-wrap gap-3 sm:gap-4 justify-center md:justify-start">
             <a
               href="#projects"
-              className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-xl text-sm font-semibold tracking-wide shadow-md shadow-blue-500/20 hover:shadow-lg hover:shadow-blue-500/30 active:scale-[0.98] transition-all duration-200"
+              className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-xl text-sm font-semibold tracking-wide shadow-md shadow-blue-500/20 hover:shadow-lg hover:shadow-blue-500/30 active:scale-[0.98] transition-all duration-200 inline-flex items-center gap-2"
             >
-              View My Work
+              <span>Explore Projects</span>
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+              </svg>
+            </a>
+            <a
+              href="https://wa.me/8801894565173?text=Hi%20Kamrul,%20let's%20discuss%20a%20developer%20role!"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-emerald-600 hover:bg-emerald-700 text-white px-5 py-3 rounded-xl text-sm font-semibold tracking-wide shadow-md shadow-emerald-500/20 active:scale-[0.98] transition-all duration-200 inline-flex items-center gap-2"
+            >
+              <span>💬 Direct WhatsApp</span>
             </a>
             <Link
               href="#contact"
-              className="border-2 border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-850 hover:border-slate-300 dark:hover:border-slate-700 px-6 py-3 rounded-xl text-sm font-semibold tracking-wide active:scale-[0.98] transition-all duration-200"
+              className="border-2 border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-850 hover:border-slate-300 dark:hover:border-slate-700 px-5 py-3 rounded-xl text-sm font-semibold tracking-wide active:scale-[0.98] transition-all duration-200 inline-flex items-center gap-2"
             >
-              Contact Me
+              <span>Get in Touch</span>
             </Link>
+          </div>
+
+          {/* Quick Spotlight Shortcut Pill */}
+          <div className="mt-4 flex items-center justify-center md:justify-start gap-2 text-xs text-slate-500 dark:text-slate-400">
+            <span>⚡ Pro Tip: Press</span>
+            <kbd className="px-1.5 py-0.5 font-mono text-[10px] font-bold bg-slate-100 dark:bg-slate-800 rounded border border-slate-200 dark:border-slate-700">
+              Ctrl + K
+            </kbd>
+            <span>or</span>
+            <kbd className="px-1.5 py-0.5 font-mono text-[10px] font-bold bg-slate-100 dark:bg-slate-800 rounded border border-slate-200 dark:border-slate-700">
+              /
+            </kbd>
+            <span>for instant command search</span>
           </div>
         </div>
 
@@ -72,7 +96,7 @@ export default function Hero() {
             {/* Profile Image Container */}
             <div className="relative w-52 h-52 sm:w-64 sm:h-64 md:w-80 md:h-80 overflow-hidden rounded-full border-[8px] border-white dark:border-slate-800 shadow-xl shadow-blue-500/5 dark:shadow-slate-950/50">
               <Image
-                src="/kamrul-islam.png"
+                src="/kamrul_profile_pic.jpg"
                 alt="Kamrul Islam, Full-Stack Developer"
                 fill
                 className="object-cover group-hover:scale-105 transition-transform duration-300"

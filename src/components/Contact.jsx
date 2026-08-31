@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+import { fireConfetti } from "@/utils/confetti";
+import { toast } from "react-toastify";
 
 export default function Contact() {
   const [status, setStatus] = useState("");
@@ -14,6 +16,8 @@ export default function Contact() {
   const handleCopyEmail = () => {
     navigator.clipboard.writeText(emailAddress);
     setCopiedEmail(true);
+    fireConfetti({ particleCount: 35 });
+    toast.success("Email copied to clipboard!");
     setTimeout(() => setCopiedEmail(false), 2500);
   };
 
@@ -37,12 +41,16 @@ export default function Contact() {
 
       if (response.ok) {
         setStatus("Message sent successfully! I'll get back to you shortly.");
+        fireConfetti({ particleCount: 100 });
+        toast.success("Message sent! I will respond to your email shortly.");
         form.reset();
       } else {
         setStatus("Failed to send message. Please email me directly.");
+        toast.error("Failed to send message via form. Please email directly.");
       }
     } catch (error) {
       setStatus("An error occurred. Please try emailing me directly.");
+      toast.error("An error occurred. Please reach out directly.");
     } finally {
       setIsSubmitting(false);
     }

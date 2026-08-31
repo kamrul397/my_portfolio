@@ -2,6 +2,8 @@
 
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { fireConfetti } from "@/utils/confetti";
+import { toast } from "react-toastify";
 
 export default function ResumeModal({ isOpen, onClose }) {
   const [activeTab, setActiveTab] = useState("preview");
@@ -88,10 +90,13 @@ CORE ARCHITECTURAL COMPETENCIES
   const handleCopyText = () => {
     navigator.clipboard.writeText(rawResumeText);
     setCopied(true);
+    fireConfetti({ particleCount: 40 });
+    toast.success("Copied ATS Plain Text Resume!");
     setTimeout(() => setCopied(false), 2500);
   };
 
   const handlePrint = () => {
+    fireConfetti({ particleCount: 50 });
     window.print();
   };
 

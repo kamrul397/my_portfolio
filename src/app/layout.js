@@ -1,6 +1,7 @@
 import "./globals.css";
 import Header from "@/components/header/Header";
 import Footer from "@/components/footer/Footer";
+import CommandPalette from "@/components/CommandPalette";
 import { Roboto } from "next/font/google";
 import { ToastContainer } from "react-toastify";
 import { ThemeProvider } from "@/context/ThemeContext";
@@ -17,9 +18,9 @@ export const metadata = {
   description:
     "Explore full-stack web applications, REST APIs, Stripe subscription workflows, and modern frontend designs built by Kamrul Islam using Next.js 16, React 19, TypeScript, Node.js, Express, and MongoDB.",
   icons: {
-    icon: "/kamrul-islam.png",
-    shortcut: "/kamrul-islam.png",
-    apple: "/kamrul-islam.png",
+    icon: "/kamrul_profile_pic.jpg",
+    shortcut: "/kamrul_profile_pic.jpg",
+    apple: "/kamrul_profile_pic.jpg",
   },
 };
 
@@ -38,6 +39,7 @@ export default function RootLayout({ children }) {
 
           <div className="max-w-7xl mx-auto">
             <Header />
+            <CommandPalette />
             <ToastContainer
               position="top-right"
               autoClose={3000}
