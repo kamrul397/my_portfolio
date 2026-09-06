@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kamrul Islam — Full-Stack Developer CV</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+    :root {
+      --primary: #0284c7;
+      --primary-dark: #0369a1;
+      --text-main: #0f172a;
+      --text-muted: #475569;
+      --border-color: #cbd5e1;
+      --bg-pill: #f1f5f9;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--text-main);
+      background-color: #f8fafc;
+      line-height: 1.45;
+      font-size: 13px;
+      padding: 24px 12px;
+    }
+
+    .cv-container {
+      max-width: 860px;
+      margin: 0 auto;
+      background: #ffffff;
+      padding: 38px 46px;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+      border: 1px solid #e2e8f0;
+    }
+
+    /* Print action bar */
+    .action-bar {
+      max-width: 860px;
+      margin: 0 auto 16px auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .btn-print {
+      background: #0284c7;
+      color: #ffffff;
+      border: none;
+      padding: 10px 20px;
+      font-size: 14px;
+      font-weight: 600;
+      border-radius: 8px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 2px 8px rgba(2, 132, 199, 0.3);
+      transition: background 0.2s;
+    }
+
+    .btn-print:hover {
+      background: #0369a1;
+    }
+
+    /* Header */
+    header {
+      border-bottom: 2px solid var(--text-main);
+      padding-bottom: 14px;
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 27px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      color: #0f172a;
+      text-transform: uppercase;
+    }
+
+    .headline {
+      font-size: 13.5px;
+      font-weight: 600;
+      color: var(--primary-dark);
+      margin-top: 2px;
+      margin-bottom: 8px;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px 14px;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .contact-links a {
+      color: var(--primary-dark);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .contact-links a:hover {
+      text-decoration: underline;
+    }
+
+    /* Section Styles */
+    section {
+      margin-bottom: 16px;
+    }
+
+    h2 {
+      font-size: 13px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: #0f172a;
+      border-bottom: 1.5px solid #e2e8f0;
+      padding-bottom: 4px;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* Summary */
+    .summary-text {
+      color: #334155;
+      font-size: 12.5px;
+      line-height: 1.5;
+      text-align: justify;
+    }
+
+    /* Skills Grid */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 5px;
+      font-size: 12px;
+    }
+
+    .skill-row {
+      display: flex;
+      line-height: 1.35;
+    }
+
+    .skill-label {
+      width: 170px;
+      font-weight: 700;
+      color: #0f172a;
+      flex-shrink: 0;
+    }
+
+    .skill-items {
+      color: #334155;
+    }
+
+    /* Projects */
+    .project-item {
+      margin-bottom: 13px;
+    }
+
+    .project-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 4px;
+    }
+
+    .project-title {
+      font-size: 13.5px;
+      font-weight: 700;
+      color: #0f172a;
+    }
+
+    .project-links a {
+      font-size: 11.5px;
+      font-weight: 600;
+      color: var(--primary);
+      text-decoration: none;
+      margin-left: 8px;
+    }
+
+    .project-links a:hover {
+      text-decoration: underline;
+    }
+
+    .project-tech {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 500;
+      color: #0284c7;
+      margin: 1px 0 3px 0;
+    }
+
+    .project-intro {
+      font-size: 12px;
+      color: #334155;
+      margin-top: 2px;
+      line-height: 1.5;
+    }
+
+    ul.bullet-list {
+      list-style-type: none;
+      padding-left: 0;
+    }
+
+    ul.bullet-list li {
+      position: relative;
+      padding-left: 14px;
+      font-size: 12px;
+      color: #334155;
+      line-height: 1.45;
+      margin-bottom: 2.5px;
+    }
+
+    ul.bullet-list li::before {
+      content: "•";
+      position: absolute;
+      left: 2px;
+      top: -1px;
+      color: var(--primary);
+      font-weight: bold;
+      font-size: 13px;
+    }
+
+    /* Experience & Education Item */
+    .experience-item, .education-item {
+      margin-bottom: 9px;
+    }
+
+    .exp-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      font-size: 13px;
+      font-weight: 700;
+      color: #0f172a;
+    }
+
+    .exp-sub {
+      font-size: 11.5px;
+      font-weight: 600;
+      color: var(--primary-dark);
+      margin-bottom: 3px;
+    }
+
+    .exp-dates {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11.5px;
+      font-weight: 600;
+      color: #64748b;
+    }
+
+    @page {
+      size: A4 portrait;
+      margin: 8mm 10mm;
+    }
+
+    /* Print Optimization */
+    @media print {
+      body {
+        background: #ffffff;
+        padding: 0;
+        font-size: 11px;
+        line-height: 1.35;
+      }
+      .action-bar {
+        display: none !important;
+      }
+      .cv-container {
+        border: none;
+        box-shadow: none;
+        padding: 0;
+        max-width: 100%;
+      }
+      header {
+        margin-bottom: 8px;
+        padding-bottom: 6px;
+      }
+      h1 {
+        font-size: 20px;
+      }
+      .headline {
+        font-size: 11.5px;
+        margin-bottom: 4px;
+      }
+      .contact-links {
+        font-size: 10.5px;
+      }
+      section {
+        margin-bottom: 7px;
+      }
+      h2 {
+        font-size: 11px;
+        padding-bottom: 2px;
+        margin-bottom: 5px;
+      }
+      .summary-text {
+        font-size: 10.5px;
+        line-height: 1.4;
+      }
+      .skills-grid {
+        gap: 2.5px;
+        font-size: 10.5px;
+      }
+      .skill-label {
+        width: 150px;
+      }
+      .project-item {
+        page-break-inside: avoid;
+        break-inside: avoid;
+        margin-bottom: 5px;
+      }
+      .project-title {
+        font-size: 11.5px;
+      }
+      .project-tech {
+        font-size: 9.5px;
+        margin: 0;
+      }
+      .project-intro {
+        font-size: 10.5px;
+        line-height: 1.35;
+        margin-top: 1px;
+      }
+      .experience-item, .education-item {
+        page-break-inside: avoid;
+        break-inside: avoid;
+        margin-bottom: 5px;
+      }
+      .exp-header {
+        font-size: 11.5px;
+      }
+      .exp-sub {
+        font-size: 10px;
+        margin-bottom: 1px;
+      }
+      .exp-dates {
+        font-size: 10px;
+      }
+      ul.bullet-list li {
+        font-size: 10.5px;
+        line-height: 1.35;
+        margin-bottom: 1.5px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="action-bar">
+    <span style="font-size: 13px; color: #64748b;">Ready to export or print</span>
+    <button class="btn-print" onclick="window.print()">
+      <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
+      </svg>
+      Print / Save as PDF (Ctrl + P)
+    </button>
+  </div>
+
+  <div class="cv-container">
+    <!-- Header -->
+    <header>
+      <h1>Kamrul Islam</h1>
+      <div class="headline">Junior Full-Stack Developer | Next.js 16 • React 19 • TypeScript • PostgreSQL • Prisma • Node.js • MongoDB</div>
+      <div class="contact-links">
+        <span>📍 Netrakona, Bangladesh</span>
+        <span>•</span>
+        <span>📞 +880 1894565173 (WhatsApp)</span>
+        <span>•</span>
+        <span>✉️ <a href="mailto:kamrulislam25262800@gmail.com">kamrulislam25262800@gmail.com</a></span>
+        <span>•</span>
+        <span>🌐 <a href="https://my-portfolio-theta-rose-11.vercel.app/" target="_blank">Portfolio</a></span>
+        <span>•</span>
+        <span>💻 <a href="https://github.com/kamrul397" target="_blank">GitHub (kamrul397)</a></span>
+        <span>•</span>
+        <span>💼 <a href="https://www.linkedin.com/in/kamrul397/" target="_blank">LinkedIn</a></span>
+      </div>
+    </header>
+
+    <!-- Professional Summary -->
+    <section>
+      <h2>Professional Summary</h2>
+      <p class="summary-text">
+        Junior Full-Stack Developer with a genuine passion for continuous learning and quickly adapting to modern technologies. Specializing in <strong>TypeScript</strong>, <strong>Next.js 16 (App Router)</strong>, <strong>React 19</strong>, <strong>PostgreSQL</strong>, <strong>Prisma ORM</strong>, and <strong>Node.js/Express</strong> with <strong>MongoDB</strong>. Proven track record of independently expanding technical knowledge—demonstrated by architecting relational PostgreSQL workflows, implementing mathematical fractional indexing algorithms, and integrating secure Stripe payments and zero-trust authentication. Dedicated to writing clean, maintainable, and type-safe code while eagerly mastering new engineering tools.
+      </p>
+    </section>
+
+    <!-- Technical Skills -->
+    <section>
+      <h2>Technical Skills</h2>
+      <div class="skills-grid">
+        <div class="skill-row">
+          <span class="skill-label">Languages:</span>
+          <span class="skill-items">TypeScript, JavaScript (ES6+), SQL, HTML5, CSS3, JSON</span>
+        </div>
+        <div class="skill-row">
+          <span class="skill-label">Frontend Frameworks:</span>
+          <span class="skill-items">Next.js 16 (App Router, Server Components, Edge Middleware), React 19, Tailwind CSS v4, DaisyUI, Framer Motion</span>
+        </div>
+        <div class="skill-row">
+          <span class="skill-label">Backend & APIs:</span>
+          <span class="skill-items">Node.js, Express.js (v5), RESTful APIs, Middleware Auth, Cookie Sessions</span>
+        </div>
+        <div class="skill-row">
+          <span class="skill-label">Databases & ORMs:</span>
+          <span class="skill-items">PostgreSQL, Prisma ORM, MongoDB Atlas, Mongoose ORM, Aggregation Pipelines, Database Indexing</span>
+        </div>
+        <div class="skill-row">
+          <span class="skill-label">State & Architecture:</span>
+          <span class="skill-items">TanStack Query v5 (React Query), Zod Schema Validation, React Hook Form, Fractional Indexing Logic</span>
+        </div>
+        <div class="skill-row">
+          <span class="skill-label">Payments & Security:</span>
+          <span class="skill-items">Stripe Checkout, Webhook Signature Verification, RBAC (Owner/Editor/Viewer), Firebase Auth, HTTP-Only JWT, CORS</span>
+        </div>
+        <div class="skill-row">
+          <span class="skill-label">DevOps & Cloud Tools:</span>
+          <span class="skill-items">Docker, Docker Compose, Git, GitHub, Vercel, Render, Cloudinary API, Postman, VS Code</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Technical Projects -->
+    <section>
+      <h2>Technical Projects</h2>
+
+      <!-- Mini Kanban -->
+      <div class="project-item">
+        <div class="project-header">
+          <span class="project-title">Mini Kanban — Real-Time Collaborative Workflow Platform</span>
+          <span class="project-links">
+            <a href="https://mini-kanban-board-rho.vercel.app" target="_blank">[Live Demo]</a>
+            <a href="https://github.com/kamrul397/mini-kanban-board" target="_blank">[Source Code]</a>
+          </span>
+        </div>
+        <div class="project-tech">Next.js 16 • React 19 • TypeScript • PostgreSQL • Prisma ORM • Node.js • Express • TanStack Query • Docker • Tailwind CSS</div>
+        <p class="project-intro">A full-stack collaborative Kanban board featuring normalized PostgreSQL models with Prisma ORM, continuous mathematical fractional indexing for 0ms drag-and-drop reordering, 3-tier RBAC access control (Owner, Editor, Viewer), and mobile-responsive collapsible accordion stacks.</p>
+      </div>
+
+      <!-- CareerConnect -->
+      <div class="project-item">
+        <div class="project-header">
+          <span class="project-title">CareerConnect — Full-Stack Job Search & Recruitment Portal</span>
+          <span class="project-links">
+            <a href="https://career-connect-iota-pied.vercel.app" target="_blank">[Live Demo]</a>
+            <a href="https://github.com/kamrul397/careerConnect" target="_blank">[Source Code]</a>
+          </span>
+        </div>
+        <div class="project-tech">Next.js 16 • React 19 • Node.js • Express • MongoDB • TanStack Query v5 • Firebase Auth • Cloudinary API • Tailwind CSS</div>
+        <p class="project-intro">A comprehensive full-stack job portal connecting candidates, recruiters, and administrators with role-protected workspaces, faceted job search powered by MongoDB aggregation pipelines, Cloudinary resume parsing, and TanStack Query optimistic updates.</p>
+      </div>
+
+      <!-- ClubSphere -->
+      <div class="project-item">
+        <div class="project-header">
+          <span class="project-title">ClubSphere — Full-Stack Extracurricular & Event Platform</span>
+          <span class="project-links">
+            <a href="https://clubspere-firebase.web.app" target="_blank">[Live Demo]</a>
+            <a href="https://github.com/kamrul397/ClubSphere_Frontend" target="_blank">[Source Code]</a>
+          </span>
+        </div>
+        <div class="project-tech">React 19 • Node.js • Express • MongoDB • Stripe API • Firebase Auth • JWT • TanStack Query • Tailwind CSS</div>
+        <p class="project-intro">A community-driven extracurricular platform facilitating student club exploration, event registration with integrated Stripe payment processing, granular role-based permissions for club managers, and dynamic real-time form validation.</p>
+      </div>
+    </section>
+
+    <!-- Professional Experience -->
+    <section>
+      <h2>Work Experience</h2>
+
+      <div class="experience-item">
+        <div class="exp-header">
+          <span>Web Developer Intern</span>
+          <span class="exp-dates">2026 — Present</span>
+        </div>
+        <div class="exp-sub">GOBAADI • Remote / Hybrid</div>
+        <ul class="bullet-list">
+          <li>Developing responsive frontend components, modular user interfaces, and integrating RESTful APIs.</li>
+          <li>Collaborating with team members to optimize state handling, cross-browser responsiveness, and component reusability.</li>
+          <li>Translating product wireframes into accessible, high-performance web pages.</li>
+        </ul>
+      </div>
+
+      <div class="experience-item">
+        <div class="exp-header">
+          <span>Computer Operator & Graphic Designer</span>
+          <span class="exp-dates">2024 — 2026 (2 Years)</span>
+        </div>
+        <div class="exp-sub">Commercial IT & Print Studio • Netrakona, Bangladesh</div>
+        <ul class="bullet-list">
+          <li>Managed end-to-end computer operations, data verification, digital document processing, and commercial printing layouts.</li>
+          <li>Designed promotional graphics, event banners, and marketing assets using Adobe Photoshop and Illustrator.</li>
+          <li>Delivered direct client technical assistance, digital system troubleshooting, and hardware/software maintenance.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Education & Training -->
+    <section>
+      <h2>Education & Certifications</h2>
+
+      <div class="education-item">
+        <div class="exp-header">
+          <span>Bachelor of Science in Computer Science and Engineering (B.Sc. CSE)</span>
+          <span class="exp-dates">Graduated: 2025</span>
+        </div>
+        <div class="exp-sub">Institute of Science Trade & Technology (ISTT)</div>
+        <p style="font-size: 11.5px; color: #475569; margin-top: 2px;">
+          Core Coursework: Data Structures, Algorithms, Relational Database Management Systems (SQL), Object-Oriented Programming (OOP), Software Engineering Principles.
+        </p>
+      </div>
+
+      <div class="education-item" style="margin-top: 6px;">
+        <div class="exp-header">
+          <span>Complete Web Development (MERN & Next.js Specialization)</span>
+          <span class="exp-dates">2024</span>
+        </div>
+        <div class="exp-sub">Programming Hero</div>
+        <p style="font-size: 11.5px; color: #475569; margin-top: 2px;">
+          Comprehensive full-stack training covering JavaScript (ES6+), React 19, Next.js 16, TypeScript, Node.js, Express, MongoDB, and modern software deployment workflows.
+        </p>
+      </div>
+
+      <div class="education-item" style="margin-top: 6px;">
+        <div class="exp-header">
+          <span>Higher Secondary Certificate (HSC / Intermediate)</span>
+          <span class="exp-dates">Passing Year: 2020</span>
+        </div>
+        <div class="exp-sub">Netrakona Govt. College • Netrakona, Bangladesh</div>
+      </div>
+    </section>
+  </div>
+
+</body>
+</html>

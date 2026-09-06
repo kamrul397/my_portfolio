@@ -1,33 +1,25 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { fireConfetti } from "@/utils/confetti";
 import { toast } from "react-toastify";
 
 export default function Contact() {
-  const [status, setStatus] = useState("");
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [copiedEmail, setCopiedEmail] = useState(false);
-
-  const emailAddress = "kamrulislam25262800@gmail.com";
-  const whatsappNumber = "+880 1894-565173";
-  const whatsappLink = "https://wa.me/8801894565173";
-
-  const handleCopyEmail = () => {
-    navigator.clipboard.writeText(emailAddress);
-    setCopiedEmail(true);
-    fireConfetti({ particleCount: 35 });
-    toast.success("Email copied to clipboard!");
-    setTimeout(() => setCopiedEmail(false), 2500);
-  };
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+  const [status, setStatus] = useState(""); // "" | "sending" | "success" | "error"
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setIsSubmitting(true);
-    setStatus("");
+    setStatus("sending");
 
-    const form = e.target;
-    const formData = new FormData(form);
+    const formData = new FormData();
+    formData.append("name", name);
+    formData.append("email", email);
+    formData.append("message", message);
+
     const formUrl = process.env.NEXT_PUBLIC_FORMSPREE_URL || "https://formspree.io/f/xbldwypg";
 
     try {
@@ -40,262 +32,178 @@ export default function Contact() {
       });
 
       if (response.ok) {
-        setStatus("Message sent successfully! I'll get back to you shortly.");
-        fireConfetti({ particleCount: 100 });
+        setStatus("success");
+        fireConfetti({ particleCount: 80 });
         toast.success("Message sent! I will respond to your email shortly.");
-        form.reset();
+        setName("");
+        setEmail("");
+        setMessage("");
       } else {
-        setStatus("Failed to send message. Please email me directly.");
+        setStatus("error");
         toast.error("Failed to send message via form. Please email directly.");
       }
     } catch (error) {
-      setStatus("An error occurred. Please try emailing me directly.");
-      toast.error("An error occurred. Please reach out directly.");
-    } finally {
-      setIsSubmitting(false);
+      setStatus("error");
+      toast.error("An error occurred. Please email directly.");
     }
   };
 
   return (
-    <section
-      id="contact"
-      className="relative py-16 px-4 sm:px-8 lg:px-12 scroll-mt-16 bg-slate-50/70 dark:bg-slate-900/60 rounded-3xl my-12 border border-slate-200/80 dark:border-slate-800 shadow-xs overflow-hidden transition-colors"
-    >
-      {/* Ambient glow spheres */}
-      <div className="absolute -top-24 -right-24 w-80 h-80 bg-blue-400/10 dark:bg-blue-600/15 rounded-full blur-3xl pointer-events-none"></div>
-      <div className="absolute -bottom-24 -left-24 w-80 h-80 bg-indigo-400/10 dark:bg-indigo-600/15 rounded-full blur-3xl pointer-events-none"></div>
+    <section id="contact" className="w-full relative z-10 py-12 sm:py-16 scroll-mt-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12">
+        {/* Section Header with Numbered Monospace Tag */}
+        <div className="mb-6 sm:mb-8">
+          <span className="text-xs font-semibold text-gray-400 tracking-widest uppercase font-mono">
+            06 <span className="text-gray-600">/</span> CONTACT
+          </span>
+          <hr className="border-t border-gray-800 mt-3 w-full" />
+        </div>
 
-      <div className="max-w-7xl mx-auto relative z-10">
-        <div className="grid lg:grid-cols-12 gap-12 items-start">
-          {/* Left Column: Direct Contact Details & Info Cards */}
-          <div className="lg:col-span-5 flex flex-col justify-between h-full space-y-8">
+        {/* Section Title */}
+        <div className="mb-10 sm:mb-12">
+          <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
+            Get in <span className="text-[#38bdf8]">Touch</span>
+          </h2>
+          <p className="mt-3 text-[#8e9cb0] text-sm sm:text-base font-normal">
+            Have a project in mind, an open role, or just want to connect? Send a direct message below.
+          </p>
+        </div>
+
+        {/* 2-Column Contact Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14">
+          {/* Left Column: Form */}
+          <form onSubmit={handleSubmit} className="lg:col-span-6 space-y-4 sm:space-y-5">
+            {/* Name Input */}
             <div>
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-100/70 dark:bg-slate-800 text-blue-700 dark:text-sky-400 text-xs font-bold tracking-wider uppercase mb-4 border border-blue-200/60 dark:border-slate-700">
-                <span className="w-2 h-2 rounded-full bg-blue-600 dark:bg-sky-400 animate-pulse"></span>
-                GET IN TOUCH
-              </div>
-
-              <h2 className="text-3xl sm:text-5xl font-black tracking-tight text-slate-900 dark:text-white leading-tight">
-                Get <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 dark:from-sky-400 dark:via-blue-400 dark:to-indigo-300">In Touch</span>
-              </h2>
-              <h3 className="text-xl sm:text-2xl font-bold text-slate-700 dark:text-slate-200 mt-2 leading-snug">
-                Let&apos;s Build Something <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-sky-400 dark:to-indigo-400">Great Together</span>
-              </h3>
-
-              <p className="mt-4 text-slate-600 dark:text-slate-300 text-base leading-relaxed font-normal">
-                Whether you have an exciting job opportunity, a project to discuss, or just want to say hi, feel free to drop me a message or connect directly!
-              </p>
+              <label htmlFor="name" className="block text-xs font-mono font-semibold text-gray-400 uppercase tracking-wider mb-2">
+                Your Name
+              </label>
+              <input
+                id="name"
+                type="text"
+                required
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                placeholder="Kamrul Islam"
+                className="w-full bg-[#080d17]/90 border border-[#1b263a] rounded-xl px-4 py-3 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-[#38bdf8] focus:ring-1 focus:ring-[#38bdf8] transition-all font-mono shadow-inner shadow-black/40"
+              />
             </div>
 
-            {/* Direct Contact Action Cards */}
-            <div className="space-y-4">
-              {/* Email Card */}
-              <div className="group flex items-center justify-between p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-xs hover:border-blue-300 dark:hover:border-slate-700 hover:shadow-md transition-all duration-200">
-                <div className="flex items-center gap-3.5 min-w-0 pr-2">
-                  <div className="w-11 h-11 flex items-center justify-center shrink-0 rounded-xl bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-sky-400 group-hover:scale-105 transition-transform border border-transparent dark:border-blue-900/40">
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                    </svg>
-                  </div>
-                  <div className="min-w-0">
-                    <span className="text-[11px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider block">Email Address</span>
-                    <a
-                      href={`mailto:${emailAddress}`}
-                      className="text-sm font-bold text-slate-900 dark:text-white hover:text-blue-600 dark:hover:text-sky-400 transition-colors truncate block"
-                    >
-                      {emailAddress}
-                    </a>
-                  </div>
-                </div>
-                <button
-                  type="button"
-                  onClick={handleCopyEmail}
-                  className="shrink-0 text-xs font-semibold px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:bg-blue-600 hover:text-white dark:hover:bg-blue-600 transition-colors cursor-pointer"
-                  title="Copy Email"
-                >
-                  {copiedEmail ? "Copied! ✓" : "Copy"}
-                </button>
-              </div>
+            {/* Email Input */}
+            <div>
+              <label htmlFor="email" className="block text-xs font-mono font-semibold text-gray-400 uppercase tracking-wider mb-2">
+                Your Email
+              </label>
+              <input
+                id="email"
+                type="email"
+                required
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="developer@example.com"
+                className="w-full bg-[#080d17]/90 border border-[#1b263a] rounded-xl px-4 py-3 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-[#38bdf8] focus:ring-1 focus:ring-[#38bdf8] transition-all font-mono shadow-inner shadow-black/40"
+              />
+            </div>
 
-              {/* WhatsApp Card */}
-              <div className="group flex items-center justify-between p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-xs hover:border-emerald-300 dark:hover:border-slate-700 hover:shadow-md transition-all duration-200">
-                <div className="flex items-center gap-3.5">
-                  <div className="w-11 h-11 flex items-center justify-center shrink-0 rounded-xl bg-emerald-50 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 group-hover:scale-105 transition-transform border border-transparent dark:border-emerald-900/40">
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-                    </svg>
-                  </div>
-                  <div>
-                    <span className="text-[11px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider block">WhatsApp & Direct Chat</span>
-                    <a
-                      href={whatsappLink}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-sm font-bold text-slate-900 dark:text-white hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors block"
-                    >
-                      {whatsappNumber}
-                    </a>
-                  </div>
-                </div>
+            {/* Message Textarea */}
+            <div>
+              <label htmlFor="message" className="block text-xs font-mono font-semibold text-gray-400 uppercase tracking-wider mb-2">
+                Message
+              </label>
+              <textarea
+                id="message"
+                required
+                rows={4}
+                value={message}
+                onChange={(e) => setMessage(e.target.value)}
+                placeholder="Hi Kamrul, let's discuss a full-stack developer opportunity..."
+                className="w-full bg-[#080d17]/90 border border-[#1b263a] rounded-xl px-4 py-3 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-[#38bdf8] focus:ring-1 focus:ring-[#38bdf8] transition-all font-mono resize-none shadow-inner shadow-black/40"
+              />
+            </div>
+
+            {/* Submit Button */}
+            <div className="pt-2">
+              <button
+                type="submit"
+                disabled={status === "sending"}
+                className="w-full sm:w-auto px-7 py-3.5 rounded-xl bg-[#38bdf8] hover:bg-[#22d3ee] active:scale-[0.98] text-black text-xs sm:text-sm font-mono font-bold uppercase tracking-wider flex items-center justify-center gap-2.5 shadow-[0_0_24px_rgba(56,189,248,0.35)] hover:shadow-[0_0_35px_rgba(56,189,248,0.55)] transition-all duration-200 cursor-pointer"
+              >
+                <span>
+                  {status === "sending"
+                    ? "SENDING..."
+                    : status === "success"
+                    ? "MESSAGE SENT! 🚀"
+                    : "SEND MESSAGE"}
+                </span>
+                <svg className="w-4 h-4 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </svg>
+              </button>
+            </div>
+          </form>
+
+          {/* Right Column: Direct Reach Contact Information */}
+          <div className="lg:col-span-6 lg:pl-10 space-y-7 sm:space-y-8">
+            <div className="font-mono text-xs font-bold text-[#bef264] tracking-widest uppercase">
+              OR REACH ME DIRECTLY
+            </div>
+
+            {/* Email */}
+            <div className="space-y-1.5">
+              <div className="font-mono text-xs font-bold text-[#38bdf8] tracking-widest uppercase">
+                EMAIL
+              </div>
+              <div>
                 <a
-                  href={whatsappLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="shrink-0 text-xs font-semibold px-3 py-1.5 rounded-lg bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 border border-emerald-200/60 dark:border-emerald-800 hover:bg-emerald-600 hover:text-white transition-colors"
+                  href="mailto:kamrulislam25262800@gmail.com"
+                  className="text-base sm:text-lg font-bold text-gray-200 hover:text-white hover:underline transition-colors font-mono"
                 >
-                  Chat Now →
+                  kamrulislam25262800@gmail.com
                 </a>
               </div>
-
-              {/* Location Card */}
-              <div className="flex items-center gap-3.5 p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-xs">
-                <div className="w-11 h-11 flex items-center justify-center shrink-0 rounded-xl bg-indigo-50 dark:bg-indigo-950/60 text-indigo-600 dark:text-indigo-400 border border-transparent dark:border-indigo-900/40">
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                  </svg>
-                </div>
-                <div>
-                  <span className="text-[11px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider block">Current Location</span>
-                  <p className="text-sm font-bold text-slate-900 dark:text-white">Netrakona, Bangladesh</p>
-                </div>
-              </div>
             </div>
 
-            {/* Live Availability Badge */}
-            <div className="p-4 rounded-2xl bg-gradient-to-r from-emerald-50 to-teal-50 dark:from-emerald-950/40 dark:to-teal-950/40 border border-emerald-200/80 dark:border-emerald-800/80 flex items-center gap-3">
-              <span className="relative flex h-3 w-3 shrink-0">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
-              </span>
-              <p className="text-xs font-bold text-emerald-800 dark:text-emerald-300">
-                Open to Remote & On-Site Junior Full-Stack Roles
-              </p>
-            </div>
-          </div>
-
-          {/* Right Column: Modern Formspree Contact Form */}
-          <div className="lg:col-span-7 w-full">
-            <form
-              onSubmit={handleSubmit}
-              className="bg-white dark:bg-slate-900 p-6 sm:p-10 rounded-3xl border border-slate-200/80 dark:border-slate-800 shadow-xl shadow-slate-200/40 dark:shadow-none space-y-6 relative overflow-hidden"
-            >
-              <div className="border-b border-slate-100 dark:border-slate-800 pb-4 mb-2">
-                <h3 className="text-xl font-extrabold text-slate-900 dark:text-white">Send Me a Message</h3>
-                <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">I usually respond within 12-24 hours.</p>
+            {/* WhatsApp */}
+            <div className="space-y-1.5">
+              <div className="font-mono text-xs font-bold text-[#38bdf8] tracking-widest uppercase">
+                WHATSAPP
               </div>
-
-              {/* Anti-Spam Honeypot */}
-              <input
-                type="text"
-                name="_gotcha"
-                className="hidden"
-                style={{ display: "none" }}
-              />
-
-              <div className="grid sm:grid-cols-2 gap-5">
-                <div className="flex flex-col gap-1.5">
-                  <label htmlFor="name" className="text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">
-                    Your Name <span className="text-rose-500">*</span>
-                  </label>
-                  <input
-                    id="name"
-                    name="name"
-                    type="text"
-                    required
-                    placeholder="John Doe"
-                    className="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/80 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 font-medium focus:outline-none focus:bg-white dark:focus:bg-slate-800 focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all duration-200 text-sm"
-                  />
-                </div>
-
-                <div className="flex flex-col gap-1.5">
-                  <label htmlFor="email" className="text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">
-                    Your Email <span className="text-rose-500">*</span>
-                  </label>
-                  <input
-                    id="email"
-                    name="email"
-                    type="email"
-                    required
-                    placeholder="john@example.com"
-                    className="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/80 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 font-medium focus:outline-none focus:bg-white dark:focus:bg-slate-800 focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all duration-200 text-sm"
-                  />
-                </div>
-              </div>
-
-              <div className="flex flex-col gap-1.5">
-                <label htmlFor="subject" className="text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">
-                  Subject
-                </label>
-                <input
-                  id="subject"
-                  name="subject"
-                  type="text"
-                  placeholder="Job Opportunity / Project Inquiry"
-                  className="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/80 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 font-medium focus:outline-none focus:bg-white dark:focus:bg-slate-800 focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all duration-200 text-sm"
-                />
-              </div>
-
-              <div className="flex flex-col gap-1.5">
-                <label htmlFor="message" className="text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">
-                  Message <span className="text-rose-500">*</span>
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  rows={4}
-                  required
-                  placeholder="Tell me about your project, timeline, or position details..."
-                  className="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/80 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 font-medium focus:outline-none focus:bg-white dark:focus:bg-slate-800 focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all duration-200 resize-none text-sm leading-relaxed"
-                ></textarea>
-              </div>
-
-              <div className="pt-2 flex flex-col sm:flex-row items-center justify-between gap-4">
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 text-white px-8 py-3.5 rounded-xl font-bold text-sm shadow-md shadow-indigo-500/20 hover:shadow-lg hover:shadow-indigo-500/30 active:scale-[0.98] disabled:opacity-70 transition-all cursor-pointer"
+              <div>
+                <a
+                  href="https://wa.me/8801894565173"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-base sm:text-lg font-bold text-gray-200 hover:text-white hover:underline transition-colors font-mono"
                 >
-                  {isSubmitting ? (
-                    <>
-                      <svg className="animate-spin w-4 h-4 text-white" fill="none" viewBox="0 0 24 24">
-                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                      </svg>
-                      <span>Sending...</span>
-                    </>
-                  ) : (
-                    <>
-                      <span>Send Message</span>
-                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
-                      </svg>
-                    </>
-                  )}
-                </button>
-
-                {status && (
-                  <div
-                    className={`w-full sm:w-auto px-4 py-2.5 rounded-xl text-xs font-semibold flex items-center gap-2 ${
-                      status.includes("successfully")
-                        ? "bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800"
-                        : "bg-rose-50 dark:bg-rose-950/60 text-rose-700 dark:text-rose-300 border border-rose-200 dark:border-rose-800"
-                    }`}
-                  >
-                    {status.includes("successfully") ? (
-                      <svg className="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
-                      </svg>
-                    ) : (
-                      <svg className="w-4 h-4 text-rose-600 dark:text-rose-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
-                      </svg>
-                    )}
-                    <span>{status}</span>
-                  </div>
-                )}
+                  +880 1894 565173
+                </a>
               </div>
-            </form>
+            </div>
+
+            {/* GitHub & LinkedIn */}
+            <div className="space-y-1.5">
+              <div className="font-mono text-xs font-bold text-[#38bdf8] tracking-widest uppercase">
+                PROFILES & REPOSITORIES
+              </div>
+              <div className="flex flex-wrap items-center gap-3 pt-1 text-xs font-mono">
+                <Link
+                  href="https://github.com/kamrul397"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-4 py-2.5 rounded-xl bg-[#0c121e] border border-[#1b263a] text-gray-300 hover:text-white hover:border-sky-500/50 transition-colors flex items-center gap-2"
+                >
+                  <span>🐙 GitHub Profile</span>
+                </Link>
+                <Link
+                  href="https://linkedin.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-4 py-2.5 rounded-xl bg-[#0c121e] border border-[#1b263a] text-gray-300 hover:text-white hover:border-sky-500/50 transition-colors flex items-center gap-2"
+                >
+                  <span>💼 LinkedIn</span>
+                </Link>
+              </div>
+            </div>
           </div>
         </div>
       </div>

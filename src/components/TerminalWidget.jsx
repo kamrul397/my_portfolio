@@ -67,7 +67,8 @@ export default function TerminalWidget({ onOpenResume }) {
           text: `🛠️ CORE SKILLS & CAPABILITIES:
   • Frontend : Next.js 16 (App Router), React 19, TypeScript, Tailwind CSS v4, Framer Motion
   • Backend  : Node.js, Express.js (v5), RESTful APIs, JWT, Cookie Sessions, Middleware Auth
-  • Database : MongoDB Atlas, Mongoose ORM, Aggregation Pipelines, Indexes
+  • Database : PostgreSQL, Prisma ORM, MongoDB Atlas, Mongoose, Aggregations, Indexes
+  • DevOps   : Docker, Docker Compose, Git, GitHub, Vercel, Render, Cloudinary API
   • Payments : Stripe Checkout, Webhooks, Signature Verification, Plan Proration Math
   • State    : TanStack Query v5 (React Query), Context API, React Hook Form, Zod`,
         });
@@ -78,9 +79,9 @@ export default function TerminalWidget({ onOpenResume }) {
           type: "output",
           text: `🚀 FEATURED PROJECTS:
   1. FitPass      - Gym SaaS with Stripe Subscriptions & TypeScript [Live: fit-pass-omega.vercel.app]
-  2. CareerConnect- Recruitment Portal with MongoDB Aggregations [Live: career-connect-iota-pied.vercel.app]
-  3. ClubSphere   - University Club Hub with Firebase Auth [Live: clubspere-firebase.web.app]
-  4. Revenio Store- High-Performance E-Commerce Engine [Live: revenio-client.vercel.app]`,
+  2. Mini Kanban  - Collaborative Board with PostgreSQL, Prisma & DND [Live: mini-kanban-board-rho.vercel.app]
+  3. CareerConnect- Recruitment Portal with MongoDB Aggregations [Live: career-connect-iota-pied.vercel.app]
+  4. ClubSphere   - University Club Hub with Firebase Auth [Live: clubspere-firebase.web.app]`,
         });
         break;
 
@@ -88,9 +89,9 @@ export default function TerminalWidget({ onOpenResume }) {
         newHistory.push({
           type: "output",
           text: `👨‍💻 ABOUT KAMRUL ISLAM:
-  Passionate Full-Stack Developer specializing in TypeScript, Next.js 16, and Node.js.
-  Location: Netrakona, Bangladesh
-  Status: Available for Intern / Junior Full-Stack Developer Roles.`,
+  Full-Stack Developer & Web Developer Intern at GOBAADI.
+  Specializing in Next.js 16, TypeScript, React 19, PostgreSQL, and Node.js.
+  Location: Netrakona, Bangladesh`,
         });
         break;
 

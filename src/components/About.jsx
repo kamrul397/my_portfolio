@@ -1,220 +1,121 @@
 "use client";
 
-import React, { useState } from "react";
-import ResumeModal from "@/components/ResumeModal";
+import React from "react";
 import GitHubStats from "@/components/GitHubStats";
-import TerminalWidget from "@/components/TerminalWidget";
-
-const philosophyPillars = [
-  {
-    title: "Role-Based Security (RBAC)",
-    badge: "Security & Auth",
-    description:
-      "Engineered multi-role authentication pipelines (Member, Manager, Admin) with HTTP-Only JWT verification, Next.js Edge Middleware, and Firebase OAuth.",
-    icon: (
-      <svg className="w-5 h-5 text-indigo-600 dark:text-sky-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-      </svg>
-    ),
-  },
-  {
-    title: "Zero-Delay UI State Caching",
-    badge: "Performance",
-    description:
-      "Implemented TanStack Query v5 with TypeScript generics for automatic client-side caching, background refetching (`staleTime`), and optimistic UI mutations.",
-    icon: (
-      <svg className="w-5 h-5 text-rose-600 dark:text-rose-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
-      </svg>
-    ),
-  },
-  {
-    title: "MongoDB Aggregation Pipelines",
-    badge: "Data Architecture",
-    description:
-      "Architected complex MongoDB aggregation queries for multi-filter search, live job category counters, candidate status tracking, and revenue analytics dashboards.",
-    icon: (
-      <svg className="w-5 h-5 text-emerald-600 dark:text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4" />
-      </svg>
-    ),
-  },
-  {
-    title: "Responsive Touch-First UX",
-    badge: "User Experience",
-    description:
-      "Designed pixel-perfect, mobile-friendly user interfaces using Tailwind CSS v4, custom drawers, glassmorphism overlays, and accessible ARIA states.",
-    icon: (
-      <svg className="w-5 h-5 text-sky-600 dark:text-sky-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
-      </svg>
-    ),
-  },
-];
 
 export default function About() {
-  const [isResumeOpen, setIsResumeOpen] = useState(false);
-
   return (
-    <>
-      <section
-        id="about"
-        className="py-16 px-6 sm:px-10 lg:px-14 scroll-mt-16 bg-white dark:bg-slate-900 rounded-3xl my-12 border border-slate-200/80 dark:border-slate-800 shadow-xs relative overflow-hidden transition-colors"
-      >
-        {/* Decorative ambient background accent */}
-        <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-br from-blue-100/40 via-indigo-100/30 to-transparent dark:from-blue-600/10 dark:via-indigo-600/10 rounded-full blur-3xl pointer-events-none -mt-20 -mr-20"></div>
+    <section id="about" className="w-full relative z-10 py-12 sm:py-16 scroll-mt-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12">
+        {/* Section Header with Numbered Monospace Tag */}
+        <div className="mb-8 sm:mb-10">
+          <span className="text-xs font-semibold text-gray-400 tracking-widest uppercase font-mono">
+            02 <span className="text-gray-600">/</span> ABOUT
+          </span>
+          <hr className="border-t border-gray-800 mt-3 w-full" />
+        </div>
 
-        <div className="grid md:grid-cols-12 gap-12 items-start relative z-10">
-          {/* Left Side: Biography & Key Stats */}
-          <div className="md:col-span-6 flex flex-col justify-between h-full">
-            <div>
-              {/* Status & Location Badges */}
-              <div className="flex flex-wrap items-center gap-2 mb-4">
-                <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-50 dark:bg-slate-800 text-blue-700 dark:text-sky-400 text-xs font-bold tracking-wider uppercase border border-blue-200/60 dark:border-slate-700">
-                  <span className="w-2 h-2 rounded-full bg-blue-600 dark:bg-sky-400 animate-pulse"></span>
-                  ABOUT ME
-                </span>
-                <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs font-semibold border border-transparent dark:border-slate-750">
-                  <span>📍 Netrakona, Bangladesh</span>
-                </span>
-              </div>
+        {/* Main 2-Column Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+          {/* Left Column: Bio / Information */}
+          <div className="lg:col-span-6 space-y-5">
+            <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
+              Kamrul Islam
+            </h2>
 
-              <h2 className="text-3xl sm:text-5xl font-black tracking-tight text-slate-900 dark:text-white leading-tight">
-                Engineering Scalable <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 dark:from-sky-400 dark:via-blue-400 dark:to-indigo-300">
-                  Full-Stack Systems
-                </span>
-              </h2>
+            <p className="text-[#8e9cb0] text-sm sm:text-base leading-relaxed">
+              <strong className="text-white font-semibold">Full-Stack Web Developer</strong> &amp; Web Developer Intern at <strong className="text-[#38bdf8] font-semibold">GOBAADI</strong>, passionate about building high-performance web applications with strict type safety, modern architectures, and clean maintainable code.
+            </p>
 
-              <p className="mt-6 text-slate-600 dark:text-slate-300 text-base sm:text-lg leading-relaxed font-normal">
-                I am a junior developer deeply passionate about building modern web applications. My foundation built with core JavaScript has naturally grown into engineering full-stack production architectures using <strong className="text-slate-900 dark:text-white font-semibold">TypeScript</strong>, <strong className="text-slate-900 dark:text-white font-semibold">Next.js 16 (App Router)</strong>, <strong className="text-slate-900 dark:text-white font-semibold">React 19</strong>, <strong className="text-slate-900 dark:text-white font-semibold">Node.js</strong>, and <strong className="text-slate-900 dark:text-white font-semibold">MongoDB</strong>.
-              </p>
+            <p className="text-[#8e9cb0] text-sm sm:text-base leading-relaxed">
+              My foundation built with modern JavaScript has grown into engineering full-stack production systems using <strong className="text-white font-medium">TypeScript</strong>, <strong className="text-white font-medium">Next.js 16 (App Router)</strong>, <strong className="text-white font-medium">React 19</strong>, <strong className="text-white font-medium">PostgreSQL</strong>, <strong className="text-white font-medium">Prisma ORM</strong>, and <strong className="text-white font-medium">MongoDB</strong>.
+            </p>
 
-              <p className="mt-4 text-slate-600 dark:text-slate-300 text-base leading-relaxed font-normal">
-                I focus heavily on end-to-end type safety, clean component modularity, role-based security (RBAC), and zero-delay UI state caching using <strong className="text-slate-900 dark:text-white font-semibold">TanStack Query v5</strong>.
-              </p>
+            <p className="text-[#8e9cb0] text-sm sm:text-base leading-relaxed">
+              I specialize in end-to-end type safety with Zod schemas, role-based access control (RBAC), relational & NoSQL data modeling, Stripe subscription workflows, and zero-delay UI state caching using TanStack Query v5.
+            </p>
 
-              {/* Key Developer Stats Counter */}
-              <div className="mt-8 grid grid-cols-3 gap-4 p-5 rounded-2xl bg-slate-50 dark:bg-slate-800/80 border border-slate-200/60 dark:border-slate-750">
-                <div className="text-center sm:text-left">
-                  <span className="text-2xl sm:text-3xl font-extrabold text-blue-600 dark:text-sky-400">5+</span>
-                  <p className="text-xs font-semibold text-slate-500 dark:text-slate-400 mt-1 uppercase tracking-wide">Full-Stack Apps</p>
-                </div>
-                <div className="text-center sm:text-left border-x border-slate-200 dark:border-slate-700 px-2 sm:px-4">
-                  <span className="text-2xl sm:text-3xl font-extrabold text-indigo-600 dark:text-indigo-400">TypeScript</span>
-                  <p className="text-xs font-semibold text-slate-500 dark:text-slate-400 mt-1 uppercase tracking-wide">+ Next.js Core</p>
-                </div>
-                <div className="text-center sm:text-left ml-8">
-                  <span className="text-2xl  sm:text-3xl font-extrabold text-emerald-600 dark:text-emerald-400">100%</span>
-                  <p className="text-xs font-semibold text-slate-500 dark:text-slate-400 mt-1 uppercase tracking-wide">Responsive UX</p>
-                </div>
-              </div>
-            </div>
-
-            {/* DUAL RESUME ACTION BUTTONS */}
-            <div className="mt-8 flex flex-wrap items-center gap-3">
-              <button
-                onClick={() => setIsResumeOpen(true)}
-                className="inline-flex items-center gap-2.5 bg-slate-950 dark:bg-blue-600 text-white font-bold text-sm px-6 py-3.5 rounded-xl shadow-md hover:bg-slate-800 dark:hover:bg-blue-700 transition duration-200 group active:scale-98 cursor-pointer"
-              >
-                <svg
-                  className="w-4 h-4 text-slate-300 dark:text-white group-hover:scale-110 transition-transform"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2.5"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z"
-                  />
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-                  />
-                </svg>
-                <span>Interactive Resume</span>
-              </button>
-
+            {/* Resume Download Action */}
+            <div className="pt-2">
               <a
-                href="/my resume 23 August.pdf"
-                download="Kamrul_Resume.pdf"
-                className="inline-flex items-center gap-2 border-2 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 font-bold text-sm px-5 py-3.5 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800 hover:border-slate-300 dark:hover:border-slate-600 transition duration-200 active:scale-98"
+                href="/Kamrul_Islam_CV.pdf"
+                download="Kamrul_Islam_CV.pdf"
+                className="inline-flex items-center gap-2.5 bg-[#121826] hover:bg-[#182236] border border-[#1e2a3e] hover:border-sky-500/50 text-gray-200 px-5 py-3 rounded-xl text-xs sm:text-sm font-mono font-semibold transition-all shadow-md active:scale-98"
               >
-                <svg
-                  className="w-4 h-4 text-slate-600 dark:text-slate-300"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2.5"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
-                  />
+                <svg className="w-4 h-4 text-[#38bdf8]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
                 </svg>
-                <span>Download PDF</span>
+                <span>Download Official Resume (PDF)</span>
               </a>
             </div>
           </div>
 
-          {/* Right Side: Engineering Philosophy & Focus Pillars */}
-          <div className="md:col-span-6 space-y-4">
-            <div className="border-b border-slate-100 dark:border-slate-800 pb-3 mb-2">
-              <span className="text-xs font-bold text-indigo-600 dark:text-sky-400 uppercase tracking-wider">CORE FOCUS</span>
-              <h3 className="text-2xl font-extrabold tracking-tight text-slate-900 dark:text-white mt-1">
-                Engineering Philosophy & Architecture
-              </h3>
-            </div>
+          {/* Right Column: 2x2 Metric Cards Grid */}
+          <div className="lg:col-span-6 relative">
+            {/* Radiant Cyan Ambient Glow directly behind center of the 4 cards */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-[#38bdf8]/15 rounded-full blur-[85px] pointer-events-none" />
 
-            <div className="space-y-3.5">
-              {philosophyPillars.map((pillar, index) => (
-                <div
-                  key={index}
-                  className="p-5 rounded-2xl bg-slate-50/80 dark:bg-slate-800/80 border border-slate-200/80 dark:border-slate-750 hover:bg-white dark:hover:bg-slate-800 hover:border-indigo-200 dark:hover:border-slate-600 hover:shadow-md transition-all duration-200"
-                >
-                  <div className="flex items-center justify-between mb-2">
-                    <div className="flex items-center gap-2.5">
-                      <div className="p-2 rounded-xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-700 shadow-2xs">
-                        {pillar.icon}
-                      </div>
-                      <h4 className="font-bold text-slate-900 dark:text-white text-base">
-                        {pillar.title}
-                      </h4>
-                    </div>
-                    <span className="text-[11px] font-bold text-indigo-600 dark:text-sky-300 bg-indigo-50 dark:bg-indigo-950/70 px-2.5 py-1 rounded-md border border-indigo-100 dark:border-indigo-900/60">
-                      {pillar.badge}
-                    </span>
-                  </div>
-                  <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed pl-10">
-                    {pillar.description}
-                  </p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5 relative z-10">
+              {/* Card 1: 6+ Full-Stack Apps */}
+              <div className="bg-[#0b101c]/90 backdrop-blur-md border border-[#1d273a] rounded-2xl sm:rounded-3xl p-6 sm:p-7 flex flex-col items-center justify-center text-center min-h-[160px] shadow-lg shadow-black/40 hover:border-sky-500/40 hover:bg-[#0e1524] transition-all duration-300">
+                <div className="text-4xl sm:text-5xl font-extrabold text-white tracking-tight flex items-baseline leading-none">
+                  <span>6</span>
+                  <span className="text-[#38bdf8] text-2xl sm:text-3xl font-bold ml-1">+</span>
                 </div>
-              ))}
+                <div className="text-[11px] sm:text-xs font-mono font-semibold tracking-wider text-gray-400 uppercase mt-4">
+                  FULL-STACK APPS
+                </div>
+              </div>
+
+              {/* Card 2: 100% Type-Safe */}
+              <div className="bg-[#0b101c]/90 backdrop-blur-md border border-[#1d273a] rounded-2xl sm:rounded-3xl p-6 sm:p-7 flex flex-col items-center justify-center text-center min-h-[160px] shadow-lg shadow-black/40 hover:border-sky-500/40 hover:bg-[#0e1524] transition-all duration-300">
+                <div className="text-4xl sm:text-5xl font-extrabold text-white tracking-tight flex items-baseline leading-none">
+                  <span>100</span>
+                  <span className="text-[#38bdf8] text-2xl sm:text-3xl font-bold ml-1">%</span>
+                </div>
+                <div className="text-[11px] sm:text-xs font-mono font-semibold tracking-wider text-gray-400 uppercase mt-4">
+                  TYPESCRIPT & NEXT.JS
+                </div>
+              </div>
+
+              {/* Card 3: 500+ Annual Commits */}
+              <div className="bg-[#0b101c]/90 backdrop-blur-md border border-[#1d273a] rounded-2xl sm:rounded-3xl p-6 sm:p-7 flex flex-col items-center justify-center text-center min-h-[160px] shadow-lg shadow-black/40 hover:border-sky-500/40 hover:bg-[#0e1524] transition-all duration-300">
+                <div className="text-4xl sm:text-5xl font-extrabold text-white tracking-tight flex items-baseline leading-none">
+                  <span>500</span>
+                  <span className="text-[#bef264] text-2xl sm:text-3xl font-bold ml-1">+</span>
+                </div>
+                <div className="text-[11px] sm:text-xs font-mono font-semibold tracking-wider text-gray-400 uppercase mt-4">
+                  GITHUB COMMITS
+                </div>
+              </div>
+
+              {/* Card 4: 0-Delay State Caching */}
+              <div className="bg-[#0b101c]/90 backdrop-blur-md border border-[#1d273a] rounded-2xl sm:rounded-3xl p-6 sm:p-7 flex flex-col items-center justify-center text-center min-h-[160px] shadow-lg shadow-black/40 hover:border-sky-500/40 hover:bg-[#0e1524] transition-all duration-300">
+                <div className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight leading-none font-mono">
+                  TanStack
+                </div>
+                <div className="text-[11px] sm:text-xs font-mono font-semibold tracking-wider text-[#38bdf8] uppercase mt-4">
+                  QUERY V5 CACHING
+                </div>
+              </div>
             </div>
           </div>
         </div>
 
-        {/* Live GitHub Stats & Developer Terminal Sandbox Row */}
-        <div className="mt-14 pt-10 border-t border-slate-100 dark:border-slate-800 grid lg:grid-cols-12 gap-8 items-start">
-          <div className="lg:col-span-6">
-            <GitHubStats />
-          </div>
-          <div className="lg:col-span-6">
-            <TerminalWidget onOpenResume={() => setIsResumeOpen(true)} />
-          </div>
+        {/* Bottom Highlight Quote Callout */}
+        <div className="mt-8 sm:mt-10 bg-[#090e18]/90 border border-[#182336] rounded-xl p-5 sm:p-6 flex items-start sm:items-center gap-4 sm:gap-5 shadow-lg shadow-black/30">
+          <div className="w-1 self-stretch bg-[#38bdf8] rounded-full shrink-0 min-h-[24px] shadow-[0_0_8px_#38bdf8]" />
+          <p className="font-mono text-xs sm:text-sm text-gray-300 leading-relaxed">
+            I build web applications with strict attention to type safety, clean API design, and intuitive UX —{" "}
+            <span className="text-[#38bdf8] font-semibold">turning complex backend logic into zero-latency user experiences</span>.
+          </p>
         </div>
-      </section>
 
-      {/* Embedded Resume Modal */}
-      <ResumeModal
-        isOpen={isResumeOpen}
-        onClose={() => setIsResumeOpen(false)}
-      />
-    </>
+        {/* Live GitHub Stats Row */}
+        <div className="mt-10">
+          <GitHubStats />
+        </div>
+      </div>
+    </section>
   );
 }
-

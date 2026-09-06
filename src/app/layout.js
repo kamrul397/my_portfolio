@@ -1,10 +1,10 @@
 import "./globals.css";
-import Header from "@/components/header/Header";
+import BackgroundGrid from "@/components/BackgroundGrid";
+import Navbar from "@/components/header/Header";
 import Footer from "@/components/footer/Footer";
 import CommandPalette from "@/components/CommandPalette";
 import { Roboto } from "next/font/google";
 import { ToastContainer } from "react-toastify";
-import { ThemeProvider } from "@/context/ThemeContext";
 
 const roboto = Roboto({
   subsets: ["latin"],
@@ -14,9 +14,9 @@ const roboto = Roboto({
 });
 
 export const metadata = {
-  title: "Kamrul Islam | Full-Stack TypeScript & Next.js Developer Portfolio",
+  title: "Kamrul Islam | Full-Stack Developer & TypeScript Engineer",
   description:
-    "Explore full-stack web applications, REST APIs, Stripe subscription workflows, and modern frontend designs built by Kamrul Islam using Next.js 16, React 19, TypeScript, Node.js, Express, and MongoDB.",
+    "Full-Stack Web Developer portfolio of Kamrul Islam. Engineered with Next.js 16, TypeScript, React 19, Node.js, Express, and MongoDB.",
   icons: {
     icon: "/kamrul_profile_pic.jpg",
     shortcut: "/kamrul_profile_pic.jpg",
@@ -26,29 +26,23 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className="scroll-smooth" suppressHydrationWarning>
+    <html lang="en" className="h-full antialiased scroll-smooth">
       <body
         suppressHydrationWarning
-        className={`${roboto.variable} antialiased font-sans bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 min-h-screen relative overflow-x-hidden transition-colors duration-300`}
+        className={`${roboto.variable} min-h-full flex flex-col font-sans`}
       >
-        <ThemeProvider>
-          {/* Global Ambient Glow Background Orbs with dark mode variants */}
-          <div className="fixed top-0 left-1/4 w-[600px] h-[600px] bg-blue-500/5 dark:bg-blue-600/10 rounded-full blur-3xl pointer-events-none -z-10"></div>
-          <div className="fixed top-1/3 right-10 w-[600px] h-[600px] bg-indigo-500/5 dark:bg-indigo-600/10 rounded-full blur-3xl pointer-events-none -z-10"></div>
-          <div className="fixed bottom-20 left-10 w-[600px] h-[600px] bg-violet-500/5 dark:bg-violet-600/10 rounded-full blur-3xl pointer-events-none -z-10"></div>
-
-          <div className="max-w-7xl mx-auto">
-            <Header />
-            <CommandPalette />
-            <ToastContainer
-              position="top-right"
-              autoClose={3000}
-              theme="colored"
-            />
-            {children}
-            <Footer />
-          </div>
-        </ThemeProvider>
+        <div className="relative min-h-screen flex flex-col justify-between overflow-x-hidden">
+          <BackgroundGrid />
+          <Navbar />
+          <CommandPalette />
+          <ToastContainer
+            position="top-right"
+            autoClose={3000}
+            theme="dark"
+          />
+          <main>{children}</main>
+          <Footer />
+        </div>
       </body>
     </html>
   );
